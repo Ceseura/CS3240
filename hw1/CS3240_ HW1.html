@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0122)https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Homework-F17/cs3240-hw1-f15.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>CS3240: HW1</title>
+<style type="text/css">
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{ display: none !important; }</style></head>
+<body>
+<h2>CS3240:&nbsp; Homework 1<br>
+</h2>
+<span style="font-weight: bold;">Deadline and submission rules:</span>&nbsp;
+See where this assignment was announced.<br>
+<br>
+<span style="font-weight: bold;">Collaboration rules:</span><br>
+You must write the code and answer the report questions on your own.
+You may only talk to other students about questions related to <span style="text-decoration: underline;">understanding the problem</span>,
+i.e. <span style="text-decoration: underline;">what</span> we want you
+to do. &nbsp;But you may not talk about <span style="text-decoration: underline;">how to solve it</span>, either
+about design or about coding. You may not talk or get help from anyone
+outside the class other that the TAs and instructor, including students
+who are not in the class this term.<br>
+<br>
+The following is a simplified version of a problem in statistical
+pattern recognition or data mining. The problem is called the k-nearest
+neighbor (k-NN) problem.&nbsp; This is a method for doing
+classification, which is a problem where each of a large set of data
+items has a
+vector of data values assigned to it, and each data item belongs to a
+category.&nbsp; A data item of unknown classification must be
+"classified", i.e. assigned to one category based on the known
+classification of the previously-classified data items.&nbsp; If k = 1,
+this is called the nearest-neighbor method.<br>
+<br>
+An example:&nbsp; medical data values (e.g. weight, BMI, family
+history, etc.) are recorded for a large number of people when they were
+40 years old. The two categories are whether or not they developed
+diabetes by the time they turned 65.&nbsp; For new 40-year-old
+patients, we want to predict if they will develop diabetes or
+not.&nbsp; We use the medical data values for each new patient and
+classify it based on the large data set of known classification.<br>
+<br>
+<span style="font-weight: bold;">Problem specification:</span><br>
+<br>
+A large number of M data items are represented by a pair of values
+(X,Y) and a label.&nbsp; The label represents one of a fixed set of
+categories. (For this problem, we'll say there are just two categories,
+and your solution can assume that.&nbsp; In this explanation, we'll
+call these
+<span style="font-style: italic;">cat1</span> and <span style="font-style: italic;">cat2</span>, but the data file could
+contain different strings for the category names.)&nbsp; A new data
+item with its own (X,Y) value is to be
+processed against each of these data items and the Euclidean distance
+between the pair of (X,Y) values is calculated.&nbsp; We'll find the k
+items that are closest to the new data item and use those k items and
+their given category as described
+below. &nbsp;(Euclidean distance between two points is pretty simple,
+but if you've forgotten see <a href="http://en.wikipedia.org/wiki/Euclidean_distance">Wikipedia</a>.)<br>
+<br>
+<span style="font-weight: bold;">Program inputs:</span><br>
+<ul>
+  <li>Value of k: prompt the user for a value of k.</li>
+  <li>Value of M: prompt the user for the value of M, the number of
+values to be read from the data file.&nbsp; This could be smaller than
+the number of values actually found in the data file.<br>
+  </li>
+  <li>Data file name: prompt the user for the name of a data file
+containing the classified data items.&nbsp; Each item will be on a line
+by itself, where each line is the category value (a string) followed by
+the X and
+Y values (all separated by 1 or more spaces).&nbsp; X and Y may be any
+floating point values (negative, positive or zero).</li>
+  <li>Unclassified data values: prompt the user for (X,Y) value
+pairs.&nbsp; Keep prompting and processing these (see below) until the
+user enters values that are 1.0 and 1.0 (yes, this is kind of dumb but
+it's
+simple).<span style="font-weight: bold;">&nbsp; Clarification:&nbsp;</span>
+the user just enters two numbers, without any parentheses or commas. <br>
+Example:&nbsp; <span style="font-family: monospace;">-3.2 1.7</span><br>
+  </li>
+</ul>
+<span style="font-weight: bold;">Calculations and outputs:</span><br>
+For each unclassified data-item that is entered, do the following:<br>
+<ol>
+  <li>Print the set of k data items that are closest to each
+unclassified data-item in non-decreasing order (i.e. nearest first).
+For each item, print its category, (X,Y) values, and distance to the
+unclassified data item on a separate line.&nbsp; (See example below.)<br>
+  </li>
+  <li>Print which category this data-item would be assigned to, based
+on whether the majority of the k-nearest-neighbors belong to the first
+or second category. &nbsp;This "voting" is how the k-nearest-neighbor
+algorithm classifies the data-item.&nbsp; This line can be in any
+format, as long as the last token on the line is the category-value.<br>
+  </li>
+  <li>Print the average distance of the k-nearest-neighbors to the
+data-item for each of the two categories. &nbsp;(This is <span style="text-decoration: underline;">not</span> how k-NN makes a
+decision about classification, but your program should do it anyway.
+)&nbsp; Print one line for each category, and they can be in any format
+as long as the distance value is the last token on the line.<br>
+    <br style="text-decoration: underline;">
+    <span style="text-decoration: underline;">Be careful about
+following these output specifications.</span> We will attempt to grade
+your program's output automatically.<br>
+  </li>
+</ol>
+<br>
+<span style="font-weight: bold;">Example results:</span><br>
+Say that&nbsp;k=5, the unclassified data-item has value (0,0),&nbsp;
+and the nearest neighbors turn out to be:<br>
+<pre>cat2&nbsp;&nbsp; 2&nbsp; 0<br>cat1&nbsp;0.5&nbsp; 0<br>cat2&nbsp;&nbsp; 1&nbsp; 0<br>cat1&nbsp;&nbsp; 0&nbsp; 0<br>cat2&nbsp;&nbsp; 0&nbsp; 3</pre>
+Then the output for item (1) described above might look something like
+this:<br>
+<span style="font-family: monospace;">cat1 0 0 0.0<br>
+cat1 0.5 0 0.5<br>
+cat2 1 0 1.0<br>
+cat2 2 0 2.0<br>
+cat2 0 3 3.0</span><br>
+<br>
+The output for item (2) described above might look something like this:<br>
+<span style="font-family: monospace;">Data item (0,0) assigned to: cat2</span><br>
+(This is because the "vote" for cat2 is 3-to-2 among the k=5 nearest
+neighbors.)<br>
+<br>
+The output for (3) might look something like this:<br>
+<span style="font-family: monospace;">Average distance to cat1
+items:&nbsp; 0.25</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">Average distance to cat2
+items:&nbsp; 2.0</span><br>
+<br>
+<span style="font-weight: bold;">Constraints:</span><br>
+<ul>
+  <li>Use an object-oriented design for your solution.&nbsp; Use
+classes as appropriate.&nbsp; See class Piazza site for info on what
+languages are OK.<br>
+  </li>
+  <li>Make use of standard libraries or other reusable components if
+this is useful.</li>
+  <li><span style="font-weight: bold;">Note! </span>Assume that this
+program could be used to process large data
+sets efficiently. Your design choices should take this into account.<br>
+  </li>
+  <li>Document any error checking you do in the report (see below).</li>
+  <li>Document any assumptions or changes you make in the report (see
+below).</li>
+  <li>Comments are not required other than a header in the main file
+listing your name and contact info.</li>
+  <li><span style="font-weight: bold;"></span>Do not Zip
+any of your files. Just submit all of them to Collab as individual
+files.&nbsp; See Piazza post for more on this. One of these files must
+be the run-hw1.sh file described below.<br>
+  </li>
+  <li>Also submit a PDF or .txt file with your
+report.&nbsp; <br>
+  </li>
+  <li><span style="text-decoration: line-through;"></span>You must
+include a shell-script named <span style="font-weight: bold;">run-hw1.sh</span>
+that compiles and runs
+your program under Linux.
+We will give you lots of examples of how to write this shell-script, so
+don't panic.&nbsp; The idea is that a grader can just execute that
+script and your program will run without the grader
+having to figure out to compile and run it.&nbsp; <span style="font-weight: bold;">Important:&nbsp; </span>You can test this
+on one of the CS Linux servers that you will have access to.&nbsp; Make
+sure it compiles and runs your program as you expect it to.<br>
+  </li>
+</ul>
+Note: If you find that the above specification unsatisfying for any
+reason, be aware of item 3 of the report you have to write (see below).<span style="font-weight: bold;"><br>
+<br>
+Report:</span><br>
+<br>
+<span style="text-decoration: line-through;"></span>Submit a PDF or
+text file that has answers to the following
+questions ("the
+report"): &nbsp;<br>
+<ol>
+  <li>Name any <span style="font-style: italic;">abstract data types</span>
+that are important in your program (if any).</li>
+  <li>Briefly describe any major <span style="font-style: italic;">data
+structures</span>
+that you use and for what purpose in your program. &nbsp;If you used
+things from a standard library (or other reusable components), mention
+those here.</li>
+  <li>If you can think of any ways this problem statement is a bad
+requirements specification, briefly list <span style="text-decoration: underline;">at most three</span>
+problems. &nbsp;This may be missing or confusing requirements. (Don't just say
+the problem statement is confusing; be specific.) &nbsp;If
+you list anything here and you had to make an assumption or a change to
+make a working program, explain that.</li>
+  <li>Briefly describe your design in terms of the program components
+you are using. &nbsp;(We are deliberately not telling you exactly how
+to describe this. &nbsp;Describe your design in a brief but useful way
+-- imagine that you wanted a fellow student to understand how to do
+this without giving them your code.)</li>
+  <li>Briefly describe any error checking you did in your
+program.&nbsp; Or <span style="font-weight: bold;">could</span> have done.<br>
+  </li>
+  <li>Briefly describe three good test cases that you did (or should
+have done) to test that your code is correct. &nbsp;Say why your set of
+test cases are good choices.</li>
+  <li>(The answer to this part will not affect your grade at all. We're
+curious.) &nbsp;How many hours did you spend on coding this assignment?
+&nbsp;(Please be honest. &nbsp;We won't hold this against you in any
+way!)</li>
+</ol>
+<span style="font-weight: bold;">How we'll grade this report:</span><br>
+We'll read your report pretty rapidly, looking to see if you have a
+good grasp of the high-level ideas we're looking for. &nbsp;We won't be
+reading for too much detail. &nbsp;We'll grade each part with a fairly
+simple grading-rubric: <br>
+5: knows it well. &nbsp;4: pretty good but could be better; &nbsp; 3:
+acceptable but needs work; &nbsp;2: just below acceptable; &nbsp;1:
+well below acceptable<br>
+<br>
+We really think you do not need long answers for these questions.&nbsp;
+If you find yourself writing a lot, try to make
+explain it more briefly. Also, it's important for this class that you
+communicate clearly and concisely, and that padding reports or
+documents with extra words makes for bad written communication.<br>
+<br>
+<span style="font-weight: bold;">A Picture Might Be Worth a Thousand
+Words:</span><br>
+In the picture below (from Wikipedia):<br>
+<ul>
+  <li>The green circle is an unclassified point (one where the user has
+entered the X,Y values.</li>
+  <li>The blue squares are points of one of the two categories, and the
+red triangles are points from the 2nd category.&nbsp; (These are read
+from the data file.)</li>
+</ul>
+Let's say k has value 3.&nbsp; Then of all the blue squares and red
+triangles, the ones inside the solid circle are the three nearest
+neighbors.&nbsp; In this case, 2 of the 3 are red triangles, so we'd
+classify the green circle as being in that category.<br>
+<br>
+But let's say k has value 5.&nbsp; The five nearest neighbors are the
+ones insides the dashed circle.&nbsp; In this case, 3 of the 5 are blue
+squares, so we'd classify the green circle as being in that category.<br>
+<br>
+Note: the circles are used to just show which ones are the k-nearest
+neighbors here. You are not calculating circles for this problem.<br>
+<br>
+<img style="width: 200px; height: 181px;" alt="" src="./CS3240_ HW1_files/200px-KnnClassification.png"><br>
+
+
+</body></html>
