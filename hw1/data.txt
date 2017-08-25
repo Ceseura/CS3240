@@ -1,4 +1,7 @@
 cat1 4 5
 cat2 3 2
+cat1 10 12
+cat1 8 1
+cat2 12 2
 cat2 34 1
 cat2 12 43

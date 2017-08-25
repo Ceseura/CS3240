@@ -1,55 +1,30 @@
-import math # this isn't already here???
+# Alexander Liang (all5dh@virginia.edu)
 
-def distanceBetween(p1, p2):
-	out = (p1[0] + p2[0])**2 + (p1[1] + p2[1])**2
-	out = math.sqrt(out);
+import utils
+from utils import point
 
-	return out;
-
-class point:
-	def __init__(self, x, y, cat = ""):
-		self.x = x;
-		self.y = y;
-		self.cat = cat;
-
-	def __str__(self):
-		return '(' + str(self.x) + ', ' + str(self.y) + '): ' + self.cat;
-
-	# Why would you do this python????
-	def __repr__(self):
-		return self.__str__();
-
-k = input("input k: ");
+k = int(input("input k, the number of nearest neighbors who get a vote: "));
 print(k);
-M = input("input M: ");
+
+M = int(input("input M, the number of values to be read from the datafile: "));
 print(M);
-filename = input("input filename: ");
-print(filename);
 
-# list which holds all of the classified values
-classified = [];
-try :
-	myfile = open(filename, 'r');
-	for line in myfile:
-		data = line.split();
-		classified.append(point(float(data[1]), float(data[2]), str(data[0])));
-except IOError:
-	print("File Not Found");
-	# TODO: Consider asking for a new filename?
+# TODO: Assumes contents of file are valid and will be formatted correctly
+# python doesn't have do-while?????
+getting = True;
+while(getting):
+	filename = input("input filename containing classified points: ");
 
-print(classified);
+	classified = utils.readFile(filename, M);
 
+	# Keep asking until you get a non-empty file
+	if (len(classified) != 0):
+		getting = False;
 
-# Consider putting all this in a function for readability
-
-# list which holds all of the unclassified values
-unclassified = []; 
 
 getting = True;
 while (getting): 
-	data = input("input x y: ");
-
-	print(data);
+	data = input("input x y to be classified: ");
 	data = data.split();
 
 	# check if input is invalid
@@ -57,19 +32,35 @@ while (getting):
 		print("invalid input. Please input an x, y pair in the format: 'x y'");
 	else: 
 		# parse point into a point object with empty category
-		p = point(float(data[0]), float(data[1]));
+		me = point(float(data[0]), float(data[1]));
 
 		# stop taking input if you get '1 1'
-
-		if (p.x == 1 and p.y == 1):
+		if (me.x == 1 and me.y == 1):
 			getting = False;
+
+
+	# now do some calculus shit
+
+	# Calculate distance to each classified point
+	for item in classified:
+		item.distance = utils.distanceBetween(me, item);
+
+	# Sort classified by distance
+	classified.sort(key=lambda x: x.distance);
+
+	# Poll the closest k classified points
+	electoral_college = {};
+	distances = {};
+	for i in range(k):
+		if (classified[i].category in electoral_college):
+			electoral_college[classified[i].category] += 1;
+			distances[classified[i].category] += classified[i].distance;
 		else:
-			unclassified.append(p);
-		
-print(unclassified);
+			electoral_college[classified[i].category] = 1;
+			distances[classified[i].category] = classified[i].distance;
 
-# now do some calculus shit
-
-
+	utils.answerPart1(classified, k);
+	utils.answerPart2(electoral_college, me);
+	utils.answerPart3(electoral_college, distances);
 
 
