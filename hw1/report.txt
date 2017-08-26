@@ -1,0 +1,38 @@
+1. Name any abstract data types that are important in your program (if any).
+	
+	This program used lists and dictionaries to store data
+
+
+2. Briefly describe any major data structures that you use and for what purpose in your program.  If you used things from a standard library (or other reusable components), mention those here.
+
+	This program used the python3 standard list and dictionary. A list was used to store the classified points read from file. Dictionaries were used in the voting system to classify points and to calculate the average distance for each category. 
+
+
+3. If you can think of any ways this problem statement is a bad requirements specification, briefly list at most three problems.  This may be missing or confusing requirements. (Don't just say the problem statement is confusing; be specific.)  If you list anything here and you had to make an assumption or a change to make a working program, explain that.
+
+	My program assumes that the given file containing classified points contains valid data and is correctly formatted - it does no error checking on the file before attempting to parse it, which will crash the program if the file is incompatible. 
+	If 'k' is an even number, it is possible for a tie to occur in the voting. My program classifies the point as the closest category in that case.
+
+
+4. Briefly describe your design in terms of the program components you are using.  (We are deliberately not telling you exactly how to describe this.  Describe your design in a brief but useful way -- imagine that you wanted a fellow student to understand how to do this without giving them your code.)
+
+	The user is first prompted for values for 'k' and 'M'. Next, the user is prompted for a filename, which is read into a standard python3 list in the form of 'point' objects, a class I which holds the point's 'x', 'y', 'category', and 'distance' values. Next, the user is prompted for a 'x y' pair to classify. The distance between each classified point and the 'x y' pair is calculated and the list of classified points is sorted by distance. Indices [0 - k-1] contain the k closest points to 'x y'. Two python3 standard dictionaries are used to hold the voting results from these k points. 
+
+
+5. Briefly describe any error checking you did in your program.  Or could have done.
+
+	The program continues to ask for filenames until you give it a file which either crashes the program (invalid parsing) or puts at least one entry in the list of classified points. However, it does not check the contents of the file which leads to crashes when parsing invalid files.
+	The program checks if the user's unclassified point can be split into two items with space (' ') as a delimiter. However, it does not check the type or validity of these two items.
+
+
+6. Briefly describe three good test cases that you did (or should have done) to test that your code is correct.  Say why your set of test cases are good choices.
+
+	To test I just used random points and classifications, and checked some of the values with a calculator. If i had to create three good test cases:
+	1. A case where some points close to the unclassified point are of one category, but many more points 		further away are of another category. Increase the value of k to see if it switches properly
+	2. A case where all points are of one category. No matter what, the result should give that category
+	3. A case where 'M' is smaller than the size of the file of classified data. Change the value of 'M' to 	ensure it works
+
+
+7. (The answer to this part will not affect your grade at all. We're curious.)  How many hours did you spend on coding this assignment?  (Please be honest.  We won't hold this against you in any way!)
+
+	1 hour
