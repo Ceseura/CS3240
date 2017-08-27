@@ -37,6 +37,7 @@ while (getting):
 		# stop taking input if you get '1 1'
 		if (me.x == 1 and me.y == 1):
 			getting = False;
+			break;
 
 
 	# now do some calculus shit
