@@ -11,7 +11,7 @@ class point:
 		self.x = x;
 		self.y = y;
 		self.category = category;
-		self.distance = math.inf;
+		self.distance = float("inf");
 
 	def __str__(self):
 		#return '(' + str(self.x) + ', ' + str(self.y) + '): ' + self.category;
