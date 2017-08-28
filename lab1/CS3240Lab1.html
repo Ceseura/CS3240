@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0124)https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Labs-F17/Lab1/cs3240-lab1-f17.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  <title>Lab 1, CS3240</title>
+<style type="text/css">
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{ display: none !important; }</style></head>
+<body>
+<h2>CS3240, Lab 1: Basic Python</h2>
+<p>The goal of these lab activities is to come up to speed on basic
+Python programming.</p>
+<hr style="width: 100%; height: 2px;">
+<p><strong>Before Starting these Assignments:</strong> Install
+Python on your laptop, and identify tutorials or other learning
+materials that you will use to learn Python.&nbsp; Read about some
+basic Python constructs so you can do the programming required of you
+in the lab. See more info below.
+</p>
+<p><strong>During the Lab Section meeting or on your own:</strong> You'll complete
+some simple Python functions that will be submitted. Do the coding on
+your own so you can submit the files at the end of lab. But you can
+talk to and get help from other students. The goal is to learn!
+</p>
+<p><strong>Upon Completing the Lab Activities:</strong> Submit your
+code to Collab, and study topics in Python that you don't feel
+comfortable with.  See the announcement to the class about when these submission
+are due.
+</p>
+<p> <a href="https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Labs-F17/Lab1/lab1-python-topics.html">Here is a an outline of some
+basic Python things</a> you'd ought to learn as soon as possible in
+your Python education. You might have a glance at these as you do this
+lab. Be sure to follow the naming conventions given in this document.
+</p>
+<hr style="width: 100%; height: 2px;">
+<h2>Activity 1:</h2>
+<p>
+In a file lab1_fact.py write three functions. You're encouraged to use
+test-driven development (TDD) as you write this code. (If you
+don't know what this, just test your code as you go along instead of
+at the end.) </p>
+<ul>
+  <li>a function factorial1(n) that calculates
+the factorial number for a parameter n. </li>
+  <li>a function factorial2(n) that returns a list of factorial values
+for numbers for value 0 to n (inclusive).</li>
+  <li>a function test_fact1() that carries out good unit tests on
+factorial1().&nbsp; Use the assert command to do your
+tests.&nbsp;&nbsp; See example below.<br>
+  </li>
+</ul>
+Name the file exactly as given above. We might use this as a module,
+and module names must have underscores not hyphens in their names.
+Also, use the technique for making this a module by which some main()
+or test
+methods are only executed if __name__ == "__main__".&nbsp; We haven't
+explain this yet in class, but it's simple -- just make your program
+look like this example shown below.<br>
+<blockquote>
+  <pre>def some_function(lst, item):<br>    # do something<br><br>if __name__ == "__main__":<br>    some_function([1, 2, 3], "foo")<br>    # maybe more<br></pre>
+</blockquote>
+Using <span style="font-style: italic;">assert</span> in Python to
+check for errors is simple.&nbsp; It raises an exception if the boolean
+expression after the keyword is false. Optionally, you can put a string
+as a 2nd value to be printed as a message.&nbsp; For example:&nbsp; <span style="font-family: monospace;">assert 3==1,"three not equal to one"</span><br>
+<br>
+Make sure
+your testing includes these cases:<br>
+<ol>
+  <li>Test for n = 0 and for n = 1.&nbsp; The special case 0! is
+defined to have value 1.<br>
+  </li>
+  <li>Test for n = 5.</li>
+  <li>Test for n being negative.&nbsp; (What should your code do? Raise
+the exception ValueError.&nbsp; How can you test for this?&nbsp; See
+    <a href="https://docs.python.org/3.6/tutorial/errors.html">https://docs.python.org/3.6/tutorial/errors.html</a>
+about how to use
+    <span style="font-style: italic;">try/except</span> with
+exceptions.&nbsp; You can "throw" an exception using
+the command "raise", also described on that page.) </li>
+</ol>
+<h2>Activity 2:</h2>
+<p>
+Write Python methods that correctly implement the following
+functions that manipulate lists.&nbsp; Put all of these in the file
+that is listed for each
+part below.&nbsp; Your file may contain other methods than the ones
+specified here. We may run-test the methods listed here.&nbsp;
+Follow the specifications carefully. Name each method <span style="text-decoration: underline;">exactly</span> as listed here.<br>
+</p>
+<p>
+Put the following functions in a file called lab1_lists.py. (We
+might use this as a module, and module names must have underscores not
+hyphens in
+their names. Also, use the technique for making this a module by which
+some main() or test methods are only executed if __name__ ==
+"__main__".)<br>
+</p>
+<ul>
+  <li><code>maxmin(list)</code><br>
+Assume the parameter is a any valid list containing comparable values
+of the same type. Return a <span style="font-style: italic;">tuple</span>
+where the first value is the maximum value found in the list (based on
+the &gt; operator) and the second value in the tuple is the minimum
+value found in the list (based on the &lt; operator).&nbsp; If the list
+is empty, return the special Python value <code>None</code>.&nbsp;
+Examples:<br>
+For the list <code>[1, 3, 3]</code>, return <code>(3, 1)</code><br>
+For the list <code>[3, 1, -2]</code>, return <code>(3, -2)</code><br>
+For the list <code>['Q', 'Z', 'C', 'A']</code>, return <code>('Z',
+'A')</code> <br>
+    <span style="font-style: italic;">Note: </span>Constraint for this
+assignment: do not use the built-in Python methods max() or min() for
+this.&nbsp; You cannot sort the list either.<br>
+    <br>
+  </li>
+  <li><code>common_items(list1, list2)</code><br>
+Assume that <code>list1</code> and <code>list2</code> are valid
+lists.&nbsp; Return a list that contains items that are found in both
+lists.&nbsp; If there are no such common items, return an empty
+list.&nbsp; The list returned will not contain any duplicate items.<br>
+    <span style="font-style: italic;">Note: </span>Constraint for this
+assignment: do not use the built-in Python support for sets for this.<br>
+    <br>
+  </li>
+</ul>
+<h3>Submission:</h3>
+By the deadline given to the class this term,
+submit your two files (lab1_fact.py and lab1_lists.py)
+to Collab at the Lab 1
+Assignment.
+<!-- If you need more time, see the TA and tell them you need an
+Extension, and turn them in by the
+extension-deadline. -->
+<br>
+<h2>For HW1, Can You Connect to Our Servers?</h2>
+For HW1, we ask that you make sure your shell script builds and runs
+your program on one of our servers:&nbsp; labunix01, labunix02,
+labunix03, or labunix04.&nbsp; (All machines are identical, so pick one
+at random.)&nbsp; You can access these machines from your own laptop by
+connecting to them using a utility called ssh.&nbsp; If you don't know
+how to do this, no problem.&nbsp; Prof. Luther Tyconievich has created
+a nice guide to using ssh for students:&nbsp; <a href="http://www.cs.virginia.edu/tychonievich/3330/F2014/ssh.html">http://www.cs.virginia.edu/tychonievich/3330/F2014/ssh.html</a><br>
+ Also, Windows 10 now has the <code>ssh</code> commnand in its command-prompt application
+ and in its PowerShell.
+ <p>
+Try connecting and copying files over there.&nbsp; You can always use
+one of the simple editors that work on the command-line on the remote
+machine (emacs, pico, vi, vim, etc.) to create your shell-script there.
+</p><p>
+Speak to the TAs if you have questions or problems with this.<br>
+<br>
+</p><h2>Got Some More Time?</h2>
+<p> Here are some additional methods you can work on. They will be part
+of Homework 2. You do not have to turn
+these in for the lab. </p>
+<ul>
+  <li><code>notcommon_items(list1, list2)</code><br>
+Assume that <code>list1</code> and <code>list2</code> are valid
+lists. Return a list that contains items that only occur in one of <code>list1</code>
+or <code>list2</code> (i.e. not in both lists). The list returned will
+not contain any duplicate items.<br>
+    <span style="font-style: italic;">Note: </span>Constraint for this
+assignment: do not use the built-in Python support for sets for this.<br>
+    <br>
+  </li>
+  <li><code>count_list_items(list)</code><br>
+Assume the parameter is a valid list that may contain duplicate
+items.&nbsp; Return a dictionary that stores counts of how often each
+item occurs, i.e. each key in the dictionary will be a unique item from
+the list, and that key's value will be how often it occurs in the
+list.&nbsp; Example:<br>
+For the list <code>[1, 3, 2, 2, 3, 1, 1, 2]</code>, the dictionary
+returned would contain <code>{1: 3, 2: 3, 3: 2}</code><br>
+  </li>
+</ul>
+
+
+</body></html>
