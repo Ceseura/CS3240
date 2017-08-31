@@ -6,3 +6,7 @@ Use k-nn to classify user input between two categories, given a labeled dataset.
 
 # Lab 1
 Just an refresher on python. Write some random methods with factorials and list manipulation. See [here](https://rawgit.com/Karavis/CS3240/master/lab1/CS3240Lab1.html) for more details.
+
+
+# Homework 2
+Add more methods to the list manipulation module, also create a 'Set' class. See [here](https://rawgit.com/Karavis/CS3240/master/hw2/CS3240Hw2.html) for more details.

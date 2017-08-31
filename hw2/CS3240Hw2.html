@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0122)https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Homework-F17/cs3240-hw2-f17.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  <title>CS3240, HW 2</title>
+<style type="text/css">
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{ display: none !important; }</style></head>
+<body>
+<h2>CS3240:&nbsp; Homework 2<br>
+</h2>
+<span style="font-weight: bold;">Version:&nbsp;&nbsp; </span>1.0
+(no updates yet <img style="width: 60px; height: 12px;" alt="" src="./CS3240Hw2_files/updated.gif">)<br>
+
+<br>
+<span style="font-weight: bold;">Deadline and submission rules:</span>&nbsp;
+See where this assignment was announced.<br>
+<br>
+<span style="font-weight: bold;">Collaboration rules:</span><br>
+You must write the code on your own.
+You may only talk to other students about questions related to <span style="text-decoration: underline;">understanding the problem</span>,
+i.e. <span style="text-decoration: underline;">what</span> we want you
+to do. &nbsp;But you may not talk about <span style="text-decoration: underline;">how to solve it</span>, either
+about design or about coding. You may not talk or get help from anyone
+outside the class other that the TAs and instructor.<br>
+<br>
+Write Python methods that correctly implement the following
+functions.&nbsp; Put all of these in the file that is listed for each
+part below.&nbsp; Your file may contain other methods than the ones
+specified here. We will run-test only the methods listed here.&nbsp;
+Follow the specifications carefully.
+<br><strong>Name each method <span style="text-decoration: underline;">exactly</span> as listed here.</strong>
+ <p>
+
+</p><h3>Part 1:&nbsp; List and Dictionary Manipulation</h3>
+(The first two functions below were written as part of a previous
+lab.&nbsp; Please go ahead and re-submit the code for those with this
+HW.&nbsp; They will be run-tested but only for some simple cases.)<br>
+<br>
+Put all the functions for Part 1 in a file called hw2_p1.py.<span style="text-decoration: line-through;"></span> (We
+might use this as a module, and module names must have underscores not
+hyphens in their names. Also, use the technique for making this a
+module by which some main() or test
+methods are only executed <small><span style="font-family: Courier New,Courier,monospace;">if __name__ ==
+"__main__"</span></small>.)
+<ul>
+  <li><code>maxmin(list)</code><br>
+Assume the parameter is a any valid list containing comparable values
+of the same type. Return a <span style="font-style: italic;">tuple</span>
+where the first value is the maximum value found in the list (based on
+the &gt; operator) and the second value in the tuple is the minimum
+value found in the list (based on the &lt; operator).&nbsp; If the list
+is empty, return the special Python value <code>None</code>.&nbsp;
+Examples:<br>
+For the list <code>[1, 3, 3]</code>, return <code>(3, 1)</code><br>
+For the list <code>[3, 1, -2]</code>, return <code>(3, -2)</code><br>
+For the list <code>['Q', 'Z', 'C', 'A']</code>, return <code>('Z',
+'A')</code> <br>
+    <span style="font-style: italic;">Note: </span>Constraint
+for this homework: do not use the built-in Python methods max() or
+min() for this. You cannot sort the list either.<br>
+    <br>
+  </li>
+  <li><code>common_items(list1, list2)</code><br>
+Assume that <code>list1</code> and <code>list2</code> are valid
+lists.&nbsp; Return a list that contains items that are found in both
+lists.&nbsp; If there are no such common items, return an empty
+list.&nbsp; The list
+returned will not contain any duplicate items.<br>
+    <span style="font-style: italic;">Note: </span>Constraint
+for this homework: do not use the built-in Python support for sets for
+this.<br>
+    <br>
+  </li>
+  <li><code>notcommon_items(list1, list2)</code><br>
+Assume that <code>list1</code> and <code>list2</code> are valid
+lists. Return a list that contains items that only occur in one of <code>list1</code>
+or <code>list2</code> (i.e. not in both lists). The list
+returned will not contain any duplicate items.<br>
+    <span style="font-style: italic;">Note: </span>Constraint
+for this homework: do not use the built-in Python support for sets for
+this.<br>
+    <br>
+  </li>
+  <li><code>count_list_items(list)</code><br>
+Assume the parameter is a valid list that may contain duplicate
+items.&nbsp; Return a dictionary that stores counts of how often each
+item occurs, i.e. each key in the dictionary will be a unique item from
+the list, and that key's value will be how often it occurs in the
+list.&nbsp; Example:<br>
+For the list <code>[1, 3, 2, 2, 3, 1, 1, 2]</code>, the dictionary
+returned would contain <code>{1: 3, 2: 3, 3: 2}</code><br>
+  </li>
+</ul>
+<br>
+<h3>Part 2:&nbsp; A Simple Class</h3>
+<span style="font-style: italic;"><span style="font-style: italic;"></span></span>You'll
+create a class called OurSet that implements a simple set ADT. Python
+has support for sets in another way, but don't use that. Instead, use a
+Python list as the underlying data store in your class.&nbsp;&nbsp; Put
+your class and any supporting functions you want in a file called
+hw2_set.py. <span style="text-decoration: line-through;"></span>(We
+might use this as a module, and module names must have underscores not
+hyphens in their names.) <br>
+Define these functions inside your OurSet class.
+Unless a return value for a method is indicated below, it does not
+matter what you return.<br>
+<span style="font-style: italic;">Note: </span>Constraint
+for this homework: do not use the built-in Python support for sets for
+this.<br>
+<ul>
+  <li><code>__init__(self)</code><br>
+This constructor is used to initialize an empty set.<br>
+    <br>
+  </li>
+  <li><code>add(self, item)</code><br>
+If the parameter to this method is not already in the set object, add
+it to the set.&nbsp; Return <code>True</code> or <code>False</code>
+to indicate if the item was added to the set.<br>
+    <br>
+  </li>
+  <li><code>add_list(self,
+list)</code>&nbsp; was <code>named addList</code>()<br>
+Add each item in the list to the set, unless it already is in the set.
+Return <code>True</code> if any item was added the set, otherwise <code>False</code>.<br>
+    <br>
+  </li>
+  <li><code>__str__(self)</code><br>
+Return a string representation of the set, in a format like this:&nbsp;
+    <code>&lt;2, 5, 7, 11&gt;</code><br>
+where the contents of the set are surrounded by "angle-brackets" and
+each item is
+separated by a comma and exactly one space.<br>
+    <br>
+  </li>
+  <li><code>__len__(self)</code><br>
+Returns the number of items in the set object.<br>
+    <br>
+  </li>
+  <li><code>__iter__(self)</code><br>
+To allow you to use <span style="font-family: monospace;">in</span>
+and <span style="font-family: monospace;">not in</span> to process
+items in an OurSet object,
+you need to define this method. In our case, you just need to know that
+an iterator is defined for the list inside your set object, so you can
+just do something with that.&nbsp; It's simple, just one line of code!<br>
+    <br>
+  </li>
+  <li><code>union(self, set2)</code><br>
+Carry out a set-union operation between the current set object and the
+parameter. Return the union as the return value. Do not modify the
+current set object or the parameter.&nbsp;&nbsp;&nbsp; (Note:&nbsp;
+you don't have to do this for this homework, but the nice way to do
+this would be to define the <code>__add__(self, other) </code>method
+so you could just use the + operator to do a union!)<br>
+    <br>
+  </li>
+  <li><code>intersection(self, set2)</code><br>
+Carry out a set-intersection operation between the current set object
+and the parameter.&nbsp; Return the intersection as the return value.
+Do not modify the current set object or the parameter.<br>
+  </li>
+</ul>
+<br>
+<span style="font-weight: bold;">Constraints:</span><br>
+<ul>
+  <li>Be sure to name the files exactly as listed above.&nbsp; Submit
+the two files individually, i.e. not in a Zip file etc.<br>
+  </li>
+  <li>For Part 1, comments are not required other than a one-line
+Python docstring for each function.</li>
+  <li>For Part 2, comments are not required other than a one-line
+Python docstring for each function and a multi-line docstring for the
+class itself.</li>
+  <li>You are not required to turn in unit-testing code, but you are
+expected to carry out good unit testing as part of your normal
+development work We will test your functions thoroughly.<br>
+  </li>
+  <li>In the lab that occurs after the deadline for this homework, you
+may be asked to demonstrate you know the basics of how to use a
+debugger to set breakpoints, step through lines of code, and see the
+values of variables.&nbsp; So learn the debugger in PyCharm (or your
+other favorite debugger/IDE) while doing this assignment.</li>
+  <li>In each
+file, we will want to be able to import these as modules.&nbsp;
+Therefore, any code that is outside of class definitions or function
+definitions that would execute if you ran the file directly must be
+controlled using the <code style="font-weight: bold;">if __name__ ==
+"__main__"</code> technique.<br>
+  </li>
+</ul>
+<span style="font-weight: bold;"></span><br>
+<br>
+
+
+</body></html>
