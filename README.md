@@ -1,5 +1,7 @@
 This repository is used to store the programming I do for the course CS3240 Advanced Software Development at the University of Virginia, School of Engineering and Applied Science. This course will primarily use python3.4.
 
+IMPORTANT: the links in this readme are cached versions of the specification webpages, and will not update if they are changed. All up-to-date spec pages can be found in UVA Collab.
+
 # Homework 1
 Use k-nn to classify user input between two categories, given a labeled dataset. See [here](https://rawgit.com/Karavis/CS3240/master/hw1/CS3240_%20HW1.html) for more details.
 
