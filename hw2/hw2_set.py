@@ -36,22 +36,22 @@ class OurSet():
 
 	def union(self, set2):
 		""" Return the union of this set and 'set2'. """
-		out = []
+		out = OurSet()
 		for item in self:
 			if item in set2:
-				out.append(item)
+				out.add(item)
 
 		return out
 
 	def intersection(self, set2):
 		""" Return the intersection of this set and 'set2'. """
-		out = []
+		out = OurSet()
 		for item in self:
 			if item not in out:
-				out.append(item)
+				out.add(item)
 		for item in set2:
 			if item not in out:
-				out.append(item)
+				out.add(item)
 
 		return out
 
