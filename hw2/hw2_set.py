@@ -36,6 +36,10 @@ class OurSet():
 
 	def union(self, set2):
 		""" Return the union of this set and 'set2'. """
+		if not isinstance(set2, OurSet):
+			print("Invalid input type")
+			return None
+
 		out = OurSet()
 		for item in self:
 			if item in set2:
@@ -45,6 +49,10 @@ class OurSet():
 
 	def intersection(self, set2):
 		""" Return the intersection of this set and 'set2'. """
+		if not isinstance(set2, OurSet):
+			print("Invalid input type")
+			return None
+
 		out = OurSet()
 		for item in self:
 			if item not in out:
@@ -71,3 +79,4 @@ if __name__ == "__main__":
 	os2.add(7)
 	print(os.union(os2))
 	print(os.intersection(os2))
+	print(os.union(5))
