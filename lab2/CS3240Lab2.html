@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0124)https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Labs-F17/Lab2/cs3240-lab2-f17.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  <title>Lab 2, CS3240</title>
+<style type="text/css">
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{ display: none !important; }</style></head>
+<body>
+
+  <h2>CS3240, Lab 2: Testing and Coverage<br>
+  </h2>
+  <p>The goal of these lab activities is to develop your skills for
+  unit-testing in
+  Python.</p>
+  <hr style="width: 100%; height: 2px;">
+  <p><strong>Before Coming to the Lab Section meeting:</strong> Before
+  coming to lab, you must do the following things to prepare. Some of the
+  include installing software on your laptop.<br>
+  </p>
+  <ol>
+    <li>Read sections 1, 2 and 3 of the <a href="https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Development-Info/python-tools-f17.html">
+  Tools for Python document</a> in the
+  Development-Info area of Collab's Resources.&nbsp; These will explain
+  how to do the next 3 items.<br>
+    </li>
+    <li>Make sure pip is working on your system (either command-line or
+  in PyCharm).</li>
+    <li>Use pip to install the nose testing package.</li>
+    <li>Be ready to use the coverage facilities, either in PyCharm or via
+  the command-line.</li>
+    <li>Read about Python's unittest framework at this link: <a href="https://docs.python.org/3/library/unittest.html">
+  https://docs.python.org/3/library/unittest.html</a><br>
+    </li>
+  </ol>
+  <p><strong>During the Lab Section meeting:</strong> You'll carry out
+  various coding activities (to be described later).<br>
+  </p>
+  <p><strong>Upon Completing the Lab Activities:</strong> Submit the
+  files listed for Activity 2 to the Collab assignment called <span style="font-style: italic;">Lab 2 Submission</span>.</p>
+  <p style="font-weight: bold;">Updates, Issues, Gotchas:</p>
+  <ol>
+    <li>Make sure you have Python 3 installed, and that you use pip3 to
+  install packages.</li>
+    <li>Coverage doesn't work in PyCharm Community Edition or Educational
+  Edition. Be sure to install PyCharm Professional.</li>
+    <li>When using PyCharm, make sure the Project Interpreter being used
+  for your Project and for your nose run-configuration has Python 3
+  selected. (We've seen times when Python 2 was getting selected even
+  when Python 3 is installed.)</li>
+  </ol>
+
+
+
+<hr style="width: 100%; height: 2px;">
+<h2>Activity 1:</h2>
+<p>In this activity you must work with a group of 2 or 3 other
+students. The goal is to learn from each other, but each person must
+write and run test-code (Steps 2 through 5.) Again, working on your own is
+not an option! Find 2-3 other people to work with!<br>
+</p>
+<p><span style="font-weight: bold;">Step 1:</span> Download the files
+from the Lab2 section of the Collab site's area
+of Lab-Files.&nbsp; If you're using PyCharm, put these into a new
+project.&nbsp; (Otherwise, store them in a new directory.)&nbsp; These
+files are:</p>
+<ul>
+  <li>ourqueue.py:&nbsp; This file implements a simple queue class
+(named <span style="font-style: italic;">OurQueue</span>).<br>
+  </li>
+  <li>test_queue_1.py: This file has a few nose-style tests for the
+queue class.<br>
+  </li>
+  <li>test_queue_2.py: This file is the start to a unittest style test
+class for the queue.<br>
+  </li>
+  <li>queue-testcases.xlsx: This Excel sheet contains some test-case
+descriptions.<br>
+  </li>
+</ul>
+<p>Study the Python files to make sure you understand what they are
+doing. Note the two test files use different forms of assert.&nbsp;
+(It's important to use the methods inherited from <span style="font-style: italic;">unittest.TestCase</span>
+when using the unittest framework.)<br>
+</p>
+<p><span style="font-weight: bold;">Step 2:</span> Use <span style="font-style: italic;">nose</span> to run the
+two test files on the queue class.&nbsp; Do the
+tests pass?&nbsp; If not, fix the code (or the test code, if it has
+problems.)</p>
+<p><span style="font-weight: bold;">Step 3: </span>Run the tests again
+with coverage.&nbsp; What parts of the queue
+class code are not covered by these tests?</p>
+<p><span style="font-weight: bold;">Step 4:</span> In your copy of
+<span style="font-style: italic;">queue-testcases.xls</span>, add one
+or more new test-case
+descriptions for test-cases that will increase the coverage
+results.&nbsp;&nbsp; In your group, talk about whether or not your
+test-case descriptions are clear enough that any team-member would be
+able to write up test-code that effectively carries out the desired
+test.&nbsp; Spend a bit of time making sure your test-cases are written
+well before you move to the next step.&nbsp; Note: You don't have to
+worry about testing __str__() today!<br>
+</p>
+<p><span style="font-weight: bold;">Step 5:</span> Each member of the
+group shold write test-code for these new testcases that carry out each
+new
+test.&nbsp; (You can write these either as "simple" test-functions in
+<span style="font-style: italic;">test_queue_1.py</span> or as unittest
+class-functions in <span style="font-style: italic;">test_queue_2.py</span>.
+It
+might be good if some members of your group did one and some the
+other.) <br>
+</p>
+<p><span style="font-weight: bold;">Step 6:</span> Does the code pass
+your new tests?&nbsp; Are the coverage results
+better?&nbsp; Continue until you have code that passes your new
+test-cases and good coverage on the queue class code.<br>
+</p>
+<p><span style="font-weight: bold;">Step 7:&nbsp;</span> Compare your
+test-case code among your group members.&nbsp; See if your group
+members can help you write better or cleaner Python code.</p>
+<p>There is nothing to submit for this Activity.  But please be willing to give
+  copies of your files to others in your group if they want them.<br>
+</p>
+<p><span style="font-style: italic;">Final note:&nbsp;</span> Don't
+worry about the following until
+you've done the whole lab.&nbsp; There is a bug in the init-method in
+this queue class. It's hard to find with unit testing, since it
+involves how objects interact and side-effects. If you have time at the
+end of lab, see if you can write test code to discover what this bug
+is.&nbsp; If you don't, don't worry: we'll explain this bug later this
+week.<br>
+</p>
+<p><br>
+</p>
+
+
+<hr style="width: 100%; height: 2px;">
+<h2>Activity 2:</h2>
+<p>In this activity, you'll do some work with your group but other things on
+  your own. What you do next may help your HW2 grade!
+  Here's a summary of what you will do:
+  </p><ol>
+    <li> Work as a group to discuss and define test-cases for HW2.</li>
+    <li> Then each person will write test-cases and test-code for these.</li>
+    <li> (optional) If your HW2 is done or partly done, as an individual
+      you can run this test-code on your HW2.</li>
+    <li> Before leaving today, as a group show each other your test-code to try
+      to learn how to write better test-code. </li>
+    <li> As a group or in pairs, see what the coverage tool can tell you
+      about your test-code.
+    </li><li> Before leaving, submit your test-code and test-cases.</li>
+    <li> With your HW2 submission, include a short report on your testing
+      experience for your HW2 code.</li>
+    </ol>
+The details of what you do follow.<br>
+<p></p>
+<p><span style="font-weight: bold;">Step 1: </span>Each person should
+create a new file <span style="font-style: italic;">hw2-testcases.xls</span>
+that is structured like the queue-testcases.xls file used in Activity 1 above.
+As a group, discuss
+and then everyone document a set of test-case descriptions in your
+.xls file for the following functions in HW2's OurSet class:</p>
+<ul>
+  <li>add()</li>
+  <li>add_list()</li>
+  <li>__len__()</li>
+  <li>union()</li>
+  <li>intersection()<br>
+  </li>
+</ul>
+<p>As
+a group, try to come up with a good set of test cases for each
+function.&nbsp; Do all of this before writing any testing-code.<br>
+</p>
+<p><span style="font-weight: bold;">Step 2A: </span>
+As an individual, write test-code for the test-cases for the first three
+class-methods <span style="font-weight: bold;">without</span> using the unittest
+framework, and put these in a file called <span style="font-style: italic;">test_lab2_1.py</span>.&nbsp; Later you'll
+use nose to run this. Again, each
+person in the group should write their own code; it is OK to ask your
+TA or your group members for help.</p>
+<p><span style="font-weight: bold;">Step 2B: </span>Write test-code for
+the test-cases for the last two class-methods using using the unittest
+framework, and put these in a file called
+<span style="font-style: italic;">test_lab2_2.py</span>.&nbsp; Each
+person in the group should write their own
+code; it is OK to ask your TA or your group members for help.</p>
+
+<p><span style="font-weight: bold;">Step 3: </span> (This is optional, because
+  if you haven't made much progress yet on HW2, then you can't do this.)
+  Each person should get their own HW2 solution and run the two unit-test files
+  on your own code.</p>
+<p><span style="font-weight: bold;">Step 4: </span>Take a few minutes
+to consult among your group members.&nbsp; Show each other your
+test-code and see if you can learn more about how to write better or
+cleaner Python code from your group members. Don't show each other your HW2
+code or talk about how to solve HW2, of course!<br>
+</p>
+<p><span style="font-weight: bold;">Step 5: </span>Run your test files
+again using coverage. (If you're not done with HW2, partner with someone who
+is and see how coverage works and what it tells you.)
+Are there parts of these methods that the
+set of test-cases your group wrote up did not cover?&nbsp; If so, add
+more test-case descriptions to the .xls file and write more test-code.<br>
+</p>
+
+<p><span style="font-weight: bold;">Step 6: </span> Before leaving lab,
+  Each person
+  should submit the following files to the Collab Assignment <span style="font-style: italic;">Lab 2 Submission</span>:<br>
+  </p><ol>
+    <li>hw2-testcases.xls</li>
+    <li>test_lab2_1.py</li>
+    <li>test_lab2_2.py</li>
+  </ol>
+<p></p>
+<span style="font-weight: bold;">Before you leave lab, you must submit
+something!</span>&nbsp; Submit the files you have made progress on in
+lab today, no matter what shape they are in. <br>
+<span style="font-weight: bold;"><span style="text-decoration: underline;">No excuses</span> -- we expect a
+file submission from everyone who attended lab <span style="text-decoration: underline;">by the time you leave the lab</span>!</span>
+
+<p><span style="font-weight: bold;">Step 7: </span>
+Before the HW2 deadline, each person should
+create a file <span style="font-style: italic;">README.txt </span>or <span style="font-style: italic;">README.pdf </span>and give short answers
+to the following questions:&nbsp; <br>
+</p>
+<ol>
+  <li>What bugs if any did these test-cases reveal in your HW2 code?</li>
+  <li>Initially what parts of your functions were not covered by your
+test-cases, based on what the coverage tool showed you?</li>
+</ol>
+<span style="font-weight: bold;">Submission:</span> submit the README.txt
+(or README.pdf) file with your HW2 files.  (If you have already submitted
+HW2, you may want to fix any bugs your testing found. In any case, you
+must resubmit your perviously submitted files along with this "readme".)
+
+<p></p>
+
+<p>
+<span style="font-weight: bold;">Have some extra time?&nbsp; </span>Go
+back to the note at the end of Activity 1 and see if you can write
+test-code to find that bug in the init-function.<br>
+
+
+</p></body></html>

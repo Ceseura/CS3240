@@ -12,3 +12,6 @@ Just an refresher on python. Write some random methods with factorials and list 
 
 # Homework 2
 Add more methods to the list manipulation module, also create a 'Set' class. See [here](https://rawgit.com/Karavis/CS3240/master/hw2/CS3240Hw2.html) for more details.
+
+# Lab 2
+An introduction to unit testing. Write and run unit tests on the program from Homework 2. See [here](https://rawgit.com/Karavis/CS3240/master/lab2/CS3240Lab2.html) for more details.
