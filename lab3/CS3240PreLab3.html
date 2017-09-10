@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0135)https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Labs-F17/Lab3/cs3240-lab5-git-f17-prelab.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  <title>Pre-Lab for CS3240 Lab, Version Control with git</title>
+<style type="text/css">
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{ display: none !important; }</style></head>
+<body>
+<h2>Pre-Lab for CS3240, Lab 3:&nbsp; Version Control with git<br>
+</h2>
+The goals of these lab activities are to learn the basics of using git
+and GitHub together. <br>
+<hr style="width: 100%; height: 2px;">
+<p><strong>Before Coming to the Lab Section meeting:</strong> Before
+coming to lab, you must do the following things to prepare. There are
+readings and also installing software on your laptop.<br>
+</p>
+<ol>
+  <li>Install git on your laptop.&nbsp; See instructions below.</li>
+  <li>Create an account on <a href="https://github.com/">github.com</a>
+if you do not already have one. Use your UVa email ID, which will allow
+you to <a href="https://education.github.com/">request an educational
+discount.</a>&nbsp;
+Click on<span style="font-style: italic;"> Request a Discount</span> on
+that page. This will allow you to have a number of private repositories
+(5, in
+fact). Later this term, one person on your project team will need to
+use one of these private repositories for your team project.</li>
+  <ul>
+    <li><span style="font-weight: bold;">Note:&nbsp;</span> Request a
+Discount as soon as possible.&nbsp; In past terms, GitHub sometimes has
+taken many weeks to process these. For today's lab, it doesn't matter,
+but you need this for when the project starts.<br>
+    </li>
+  </ul>
+  <li>Download a copy of the Git Cheatsheet from <a href="https://training.github.com/kit/">GitHub's training page</a>.
+You'll want to refer to this during lab, so you may want to print a
+copy and bring it to lab. Otherwise be prepared to look at it on your
+computer.</li>
+  <li>Review the slides we covered in the lecture on git and version
+control.</li>
+  <li>Look over one of the two suggested readings on git given in the
+slides:</li>
+  <ul>
+    <li>“Git Immersion” <a href="http://gitimmersion.com/">http://gitimmersion.com/</a></li>
+    <li>Simple tutorial of the basics: <a href="http://rogerdudler.github.io/git-guide">http://rogerdudler.github.io/git-guide/</a>
+    </li>
+  </ul>
+  <li>Complete the pre-lab activity listed below and submit the
+screen-capture described there to Collab before your lab section begins.<br>
+  </li>
+</ol>
+<p><strong>During the Lab Section meeting:</strong> You'll carry out
+various coding activities (to be described later).<br>
+</p>
+<p><strong>Upon Completing the Lab Activities:</strong> Submit the
+output of a <span style="font-style: italic;">git lo</span>g command
+showing your work in the lab to the Collab
+assignment called <span style="font-style: italic;">Lab 4 Submission</span>.</p>
+<p style="font-weight: bold;">Updates, Issues, Gotchas:</p>
+<ol>
+  <li>None yet, but watch this space.<br>
+  </li>
+</ol>
+<hr style="width: 100%; height: 2px;">
+<h3>Installing git on your Laptop<br>
+</h3>
+<p>
+Linux and OS X users may have git installed already (type <span style="font-style: italic;">git</span> to
+see).&nbsp; If not, if you are using a package manager (apt-get, brew,
+etc) feel free to use that to download
+git if you know how to use them for this.&nbsp; For everyone else....<br>
+</p>
+<p>
+  (<strong>Note:</strong> Windows 10 Anniversary Edition may find that you have git installed
+  if you work with this edition's bash shell.  Find info on this option
+  <a href="https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/">
+    this link</a>.  If that doesn't work for you, follow the instructions
+    for Windows users below to install git.)
+  </p>
+
+
+<p>You can download a version of git from GitHub and other providers,
+but
+we recommend you download it from the main git site at this URL:
+<a href="http://www.git-scm.com/downloads">http://www.git-scm.com/downloads</a>
+<br>
+<span style="font-weight: bold;">Note: This is
+particularly important for Windows users,</span> since this download
+comes
+with a bash-shell (like you find on Linux) called <span style="font-weight: bold;">git-bash</span> that we ask you to
+use.&nbsp; We've
+seen git commands fail mysteriously when run from the Windows
+command-prompt. Don't use that! Use git-bash! It's a bash shell command
+line environment, just like Linux, with git
+commands and also basic Unix commands installed, plus some other useful
+things in its
+/bin folder: ssh, scp, perl, curl, vi, vim.&nbsp; If you need to do
+UNIX shell kinds of things on your Windows machine, this is a nice
+thing to have.&nbsp; (FYI, if you know cygwin, it's like that but
+lighter-weight, since it installs less.)<br>
+</p>
+<p>Follow the directions to
+install git.&nbsp; Here are some notes for Windows users.&nbsp; When
+running the installer, I kept all the defaults, except you need to make
+sure you choose the following:<br>
+</p>
+<ol>
+  <li>In the window <span style="font-style: italic;">Select Components</span>,
+I chose
+    <ul>
+      <li>Under <span style="font-style: italic;">Addtional Icons</span>,
+I checked <span style="font-style: italic;">On the Desktop&nbsp; </span>(This
+puts the Git Bash icon on your desktop.)<br>
+      </li>
+      <li>Under <span style="font-style: italic;">Windows Explorer </span>integration,
+I checked <span style="font-style: italic;">Get Bash Here</span> (This
+lets your right-click on a folder and open Git Bash in that folder.)<br>
+      </li>
+    </ul>
+  </li>
+  <li>In the window <span style="font-style: italic;">Adjusting your
+PATH environment</span>, choose <span style="font-style: italic;">Use
+Git
+from Git Bash only</span><br>
+(Experience in previous classes suggests that you should only use Git
+from Git Bash.)</li>
+  <li>In the window <span style="font-style: italic;">Configuring the
+line ending conversions</span>, keep the
+default.</li>
+<li>In the window <span style="font-style: italic;">Configuring the
+  terminal to use with Git Bash,</span> we
+  recommend you choose <span style="font-style: italic;">Use MinTTY</span>.
+</li>
+</ol>
+<span style="font-weight: bold;"></span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;">Initial
+configuration (one time only, for all platforms):</span><br>
+<br>
+Start a shell window to use Git (on Windows use Git Bath, on Linux or
+OS X open a "terminal" window), in that shell window, set some
+configuration values.&nbsp; Type the following
+but update the final arguments:<br>
+<span style="font-style: italic;">git config --global user.name "Your
+Name"</span><br style="font-style: italic;">
+<span style="font-style: italic;">git config --global user.email
+"your_email@whatever.com"</span><br>
+<br>
+There are times a git command will bring up an editor window. The
+default is <span style="font-style: italic;">vi</span>, but if you
+want <span style="font-style: italic;">emacs</span> instead, type:<br>
+<span style="font-style: italic;">git config --global core.editor emacs</span><br>
+<h3>
+<hr>Pre-lab Activity and Submission to Do <em>Before</em> Lab<br>
+</h3>
+<p>The following steps must be done before coming to lab. By doing
+these steps, we'll know you've got git installed correctly and have
+created a GitHub account. There's a submission to be done before coming
+to lab to show that you've done this. If you don't complete this, some
+points will be deducted for lab participation this week.</p>
+<p>First, create a repository on GitHub:</p>
+<ol>
+  <li>Sign into www.github.com with your account.&nbsp; (Don't have
+one? See the top of this page.)</li>
+  <li>Create new repository.&nbsp; (See instructions they give, or just
+go for it by clicking the plus-sign.)</li>
+  <li>Name the repo <span style="font-style: italic;">cs3240-labdemo</span>,
+and make it public.</li>
+  <li>Check the box to initialize this with a README file.</li>
+  <li>Add a .gitignore for Python, and choose the MIT License.</li>
+  <li>Now click Create Repository.</li>
+</ol>
+<p>GitHub will show the main page for your new repo. <br>
+Near the bottom-right, you'll see a text-box with the text <span style="font-style: italic;">HTTPS clone URL</span> right above it, and
+an icon like a clipboard with an arrow to its right. This textbox
+contains the URL that you can use with a git-command on your local
+machine to clone the directory. To do that:<br>
+</p>
+<ol>
+  <li>Click on the clipboard icon to copy the URL to your clipboard.</li>
+  <li>Go to your shell window on your local machine, and <span style="font-style: italic;">cd</span> to a folder where you want to
+keep your projects in folders. (Create such a folder if you don't have
+one.)</li>
+  <li>Type <span style="font-style: italic;">git clone</span> and then
+paste in the URL from your clipboard and
+hit return.&nbsp; It should look something like this:<br>
+    <span style="font-style: italic;">git clone
+https://github.com/hortonuva/cs3240-demo.git</span><br>
+(Windows users:&nbsp; in Git-Bash, you might find copy-and-paste
+commands by right-clicking in your window.&nbsp; If not, see <a href="https://www.udacity.com/wiki/ud775/git-bash-copy-paste">this
+link</a> for some more info on how to cut and
+paste.)<br>
+  </li>
+  <li>This will download all the files from the remote repo into a
+directory (named after your repo) in the current directory.<br>
+  </li>
+</ol>
+<p>
+Congrats! You now have a local repository on your machine you can work
+with, plus a separate repository on GitHub where you can upload your
+files for safekeeping or to share.&nbsp; Now do the following from the
+shell window on your local machine:<br>
+</p>
+<ol>
+  <li>Use <span style="font-style: italic;">cd</span> to make sure
+you're in the <span style="font-style: italic;">cs3240-labdemo</span>
+directory.</li>
+  <li>Type <span style="font-style: italic;">ls -a</span> to see what
+files are there.&nbsp; Note the hidden files
+that begin with a "."</li>
+  <li>Create a file <span style="font-style: italic;">hello.py</span>
+that prints "hello".&nbsp; Make sure it runs
+under Python 3.</li>
+  <li>Type <span style="font-style: italic;">git status</span> and
+make sure you understand what that tells you.</li>
+  <li>Type <span style="font-style: italic;">git add hello.py</span>
+to add that file to the staging area.</li>
+  <li>Type <span style="font-style: italic;">git status</span> and
+make sure you understand what that tells you.</li>
+  <li>Add the file to your local repo by typing <span style="font-style: italic;">git commit -m "Initial
+commit"</span> </li>
+  <li>Synchronize your local repository with your remote repo on GitHub
+by
+typing <span style="font-style: italic;">git push</span><br>
+  </li>
+</ol>
+<p>Go back to your web-browser showing your GitHub repo.&nbsp; Refresh
+your browser window, and you should see the hello.py file in the list
+of files.<br>
+</p>
+<p><span style="font-weight: bold;">To submit before lab:</span><br>
+</p>
+<p>Take a screen-capture of this window, and submit the image file to
+<span style="font-style: italic;">Lab 3 Pre-lab</span> under <span style="font-style: italic;">Assignments</span> in Collab before coming
+to lab.&nbsp; Make
+sure your image file shows your repo name (which includes your GitHub
+id) and the list of files.&nbsp;
+<a href="https://collab.its.virginia.edu/x/Mpc0gI">Here's
+an example</a> of the kind of
+screen-capture we want.<br>
+<br>
+</p>
+
+<br>
+<br>
+
+
+</body></html>
