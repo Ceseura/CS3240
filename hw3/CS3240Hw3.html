@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0122)https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Homework-F17/cs3240-hw3-f17.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  <title>CS3240 HW3</title>
+<style type="text/css">
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{ display: none !important; }</style></head>
+<body>
+<h2>CS3240, HW3:&nbsp; Dictionaries, Test Cases and Unit-Testing<br>
+</h2>
+<span style="font-style: italic;">Version 1.0, 9/7/2017</span><br>
+<span style="font-style: italic;">Updates: </span><span style="font-style: italic;"></span><br>
+<ol>
+  <li>None.</li>
+</ol>
+
+<h3>
+See Collab for the due date and time.<br>
+Note: Use the exact names fo files and methods given in the instructions below.
+<!--3-->
+
+</h3><h3>Collaboration Policy:</h3>
+Coding in this homework is an individual assignment. You can ask fellow
+students about the
+question or the problem, but not for help on the design or
+implementation. It is an Honor Violation to look at another student's
+Python or test code, or to allow another student to look at your
+Python or test code.<br>
+<br>
+In Item 13 below you'll see that you have to create a file that
+documents test cases. You can optionally work with a partner on this.
+After you write the test-cases, <strong>each person must write the test code
+independently (as noted above).</strong><br>
+<br>
+Students have asked if it's OK to use a Web search to find out how to
+do things. Of course! What's not allowed is to search the web to find a
+code solution to this homework or something close to it, and then
+submit that as your own work. <br>
+<br>
+<h3>Class Graph</h3>
+In a file <code>graph.py</code>, create a class Graph with the
+properties listed below. Assume graphs are <span style="font-style: italic;">simple graphs</span>,
+i.e. graphs that do not allow edges that connect a node to
+itself.&nbsp; Also, note below where we said graphs should be assumed
+to be <span style="font-style: italic;">undirected</span>.&nbsp;
+(Note: in the past graphs that were <span style="font-weight: bold;">not</span>
+simple were called multigraphs,
+but I see on Wolfram's site that a better term now is <span style="font-style: italic;">pseudograph</span>.)
+<ol>
+  <li>Its constructor will optionally take a dictionary used to
+initialize the graph.&nbsp; Each key in the dictionary will be a string
+representing a node in the graph, and each value with be a list of
+strings representing nodes that are adjacent to the key.&nbsp; (Just
+like an adjacency list representation of a graph.) You can assume this
+dictionary represents a valid simple graph. If your Graph object
+has a data object inside it to hold the data in the parameter passed
+in, make a copy of the data in the dictionary to avoid side-effects.<br>
+Example:&nbsp; The graph below could be stored in an object with this
+call to the constructor:<br>
+    <code>&nbsp;&nbsp; g = Graph( { 'A': ['B', 'D'], 'B': ['A', 'D',
+'C'], 'C': ['B'], 'D': ['A', 'B'], 'E' : [] } )</code><br>
+    <br>
+    <img style="width: 201px; height: 122px;" alt="Example Graph" src="./CS3240Hw3_files/graph1.jpg"><br>
+  </li>
+  <li>Method <code>get_adjlist(self, node)</code> will return the list
+of nodes
+adjacent to its parameter node, or <code>None</code> if the node is
+not in the graph.</li>
+  <li>Method <code>is_adjacent(self, node1, node2)</code> will return
+a boolean
+value indicating if the second node is adjacent to the first. (If node1
+is not in the graph, return False.)<br>
+  </li>
+  <li>Method <code>num_nodes(self)</code> will return the number of
+nodes stored in
+the graph.</li>
+  <li>Method <code>__str__(self)</code> will return a string
+representation of the
+data in
+the graph, formatted like a Python dictionary. (Which is simple if you
+store your data as a... &lt;grin&gt;)</li>
+  <li>Method <code>__iter__(self)</code> will allow you to iterate
+over the nodes in
+the graph.&nbsp; (Very easy if you understand how the function iter()
+is used
+with dictionaries.)</li>
+  <li>Method <code>__contains__(self,node)</code> will return a
+boolean value to
+indicate if the node is in the graph. (Again, very easy if you
+understand how <span style="font-family: monospace;">in</span> is used
+for dictionaries.)&nbsp;&nbsp; Note for your interest and
+education:&nbsp; the operator <code>in</code> will work even if you do
+not define __contains__, as long as Python can iterate over&nbsp;
+your&nbsp; dictionary. <br>
+  </li>
+  <li>Method <code>__len__(self)</code> will do the same as
+num_nodes().<br>
+  </li>
+  <li>Method<code style="text-decoration: line-through;"></code> <code>add_node(self,node)</code>
+will add a new node to
+the graph. This new node will have no other
+nodes adjacent to it after it has been added. Return False if the node
+is already in the graph and do not modify the graph in this case.
+Return True if the node is added.</li>
+  <li>Method <code>link_nodes(self, node1,
+node2)</code> makes the two nodes to be adjacent to each other in
+the graph. Return False if the two nodes are already adjacent, and do
+not modify the graph in this case. Return True if the edge is
+added.&nbsp; Also, return False if node1 and node2 are the same, or if
+either node is not in the graph.<br style="font-style: italic;">
+  </li>
+  <li>In class Graph, add the method <code>unlink_nodes(self, node1,
+node2)</code> that makes two adjacent nodes to be no longer adjacent.
+Return False if the nodes were not initially adjacent or are not in the
+graph, and do not modify
+the graph in this case. Return True if the edge is removed.</li>
+  <li>In class Graph, add the method <code>del_node(self, node)</code>
+that will remove the node from the graph and all edges for that node.
+Return False if the node is not in the graph and do not modify the
+graph in this case. Return True if the node and its edges are removed.<br>
+    <br>
+  </li>
+  <li>Use the Excel document <code>testcase-doc-hw3.xlsx</code> (found
+in the Collab Resources folder called<span style="text-decoration: line-through;"></span> <span style="font-style: italic;">Homework F15</span> to document test
+cases for the Graph class.&nbsp; Use these plans for your test cases to
+plan what Python test code you'll write for that class (the next step).
+    <br>
+  </li>
+  <ul>
+    <li>Our standard process says you should write those before or
+during test-case coding, <strong>and not after.</strong> Do the right thing!</li>
+    <li>You can work with one partner on creating the test-cases and in
+creating this document. List both names in the file, and each person
+turns in a copy of the file.&nbsp; Each person must write the code for
+the test-cases after they have been written!</li>
+    <li>You do not have to create test-cases or code unit-tests for the
+constructor, __iter__, __str__, <br>
+    </li>
+    <li>See the Constraints section below about the number of
+test-cases you should have.<br>
+      <br>
+    </li>
+  </ul>
+  <li>Use the Python <code>unittest</code> framework to write a test
+class with test-functions for your Graph class.</li>
+  <ol>
+    <li>Name the file<code></code> <code>test_graph.py</code>.</li>
+    <li>Each test-case from the XLS file should be implemented in its
+own test-function.&nbsp; Include the test-case ID in the name of the
+test-function somehow.&nbsp; For example, if the ID you put in the
+Excel file is "G3" then its corresponding test-function could be named <tt>test_is_adjacent1_g3</tt>.
+(This is to help us in grading.)<br>
+    </li>
+    <ul>
+      <li>Also, put the test-id into
+the
+docstring for your Python test-function, and also in the <code>msg</code>
+parameter for the <code>unittest</code> assertion methods.</li>
+    </ul>
+    <li>Each test-function will have code for one test-case, but there
+may be more than one assertion in each test-case. For example, you
+might have one assertion to test the contents of the graph, and another
+to test the return value.<br>
+    </li>
+    <li>Use <code>coverage.py</code> (integrated with PyCharm) too
+make
+sure your unit-test code has good coverage of the methods in
+Graph.&nbsp; Note: if you're not using PyCharm, you can download <code>coverage.py</code>
+and run it in your IDE or from the command-line.&nbsp; See <a href="http://nedbatchelder.com/code/coverage/">http://nedbatchelder.com/code/coverage/</a>
+.<br>
+If you're using PyCharm, it's not in the Community edition. Get the
+Professional edition and establish a student account with JetBrains.<br>
+      <br>
+    </li>
+  </ol>
+  <li>Create another file <code>graph_functions.py</code> and in it
+write a function <code>is_complete(grph) </code>that will return True
+if the Graph object <code>grph</code>
+is a complete graph, i.e. every node is adjacent to every other node. <br>
+  </li>
+  <ol>
+    <li>Assume the graph is undirected. Do not assume it is
+connected.&nbsp;
+(If it's not connected, of course it's not complete.)<br>
+    </li>
+    <li>If the parameter is not a Graph object, raise an <code>TypeError</code>
+exception with an appropriate message. You might find the Python
+function <code>isinstance</code> useful. You can assume that if it is
+a Graph object, it is a valid one (since our class above should only
+create valid Graphs). <br>
+    </li>
+    <li>Per mathworld.wolfram.com, graphs with zero nodes or one node
+are complete graphs. <br>
+      <br>
+    </li>
+  </ol>
+  <li>In file <code>graph_functions.py</code> write a function <span style="font-family: monospace;">nodes_by_degree</span><code>(grph)</code>.
+This method should do the following:<br>
+  </li>
+  <ol>
+    <li>In a graph, a node's degree is the number of nodes that are
+adjacent to it.</li>
+    <li>Calculate the degree for each node, and represent that as a
+tuple.&nbsp; Example, <code>('node3', 7) </code>would mean that a
+node with value 'node3' would have 7 adjacent nodes in the graph.</li>
+    <li>Your function will return a list of such tuples, with the list
+sorted in descending order by the degree.&nbsp; Example of return value:<br>
+&nbsp;&nbsp;&nbsp; [ <code>('node2', 3), </code><code>('node3', 2), </code><code>('node1',
+2), </code><code>('node9', 1)]</code><br>
+This output would be for a graph with 4 nodes, where one node has
+degree 3, two have degree 2, and one has degree 1.<br>
+    </li>
+    <li><code></code>In the sorted list, if two items have the same
+degree, then it does not matter which order they appear.</li>
+    <li>If the parameter is not a Graph object, raise a <code>TypeError</code>
+exception with an appropriate message. You might find the Python
+function <code>isinstance</code> useful. You can assume that if it is
+a Graph object, it is a valid one (since our class above should only
+create valid Graphs). <br>
+      <br>
+    </li>
+  </ol>
+  <li>Use the Python nose package to run a file of tests called <code>test_graph_functions.py</code>
+that will carry out a good set of tests on these two functions<code></code>.</li>
+  <ol>
+    <li>Again, use <code>coverage.py</code> (built-in to PyCharm or
+independently) to
+make sure your tests
+have good coverage of these methods.</li>
+    <li>You do not have to document these test cases in the .xls
+file.&nbsp; However, it's a good idea to plan your test cases in
+advance, just as you did for the Graph class.<br>
+    </li>
+  </ol>
+</ol>
+<h3>Constraints:</h3>
+<ul>
+  <li>Be sure to name the files and each function exactly as listed
+above.</li>
+  <li>In every file, define the __author__ variable to be your UVa
+email ID, e.g. mst3k.<br>
+  </li>
+  <li>Comments are not required other than a one-line
+Python docstring for each function and for the class.</li>
+  <li><strong>How many test cases are required,</strong> you ask.&nbsp;
+For each function, we'll give a score for you testing the "normal"
+case(s) and then a second score for how well you covered any edge,
+boundary or extreme cases.&nbsp; So if you don't do as many of these
+later test cases as we think you should, you might get 3 out of 4
+points for this later, while earning 4 out of 4 for the "normal"
+cases.&nbsp; We'll also then do a bit of rounding of this score.&nbsp;
+You should think about small or extreme graph sizes, too.&nbsp; Bottom
+line: if you miss a few obvious cases for a few methods, that will not
+hurt your grade very much (if at all).</li>
+  <li>If you're using OpenOffice or something and can only give us an
+.xls file (not .xlsx), that's fine.<br>
+  </li>
+  <li>In the lab that occurs after the deadline for this homework, you
+may be asked to demonstrate you know the basics of how to use a
+debugger to set breakpoints, step through lines of code, and see the
+values of variables.&nbsp; So learn the debugger in PyCharm (or your
+other favorite debugger/IDE) while doing this assignment.</li>
+  <li>In files <code>graph.py</code> and <code>graph_functions.py</code>
+we will want to be able to import these as modules.&nbsp;
+Therefore, any code that is outside of class definitions or function
+definitions that would execute if you ran the file directly must be
+controlled using the <code style="font-weight: bold;">if __name__ ==
+"__main__"</code> technique.<br>
+  </li>
+</ul>
+<h3>Submission and Evaluation</h3>
+Submit these files to Collab:&nbsp; <br>
+<ul>
+  <li><code>graph.py</code></li>
+  <li><code></code><code>test_graph.py</code></li>
+  <li><code>graph_functions.py</code></li>
+  <li><code>test_graph_functions.py</code></li>
+  <li><code>testcase-doc-hw3.xlsx</code></li>
+  <li>(possibly) <code>README.txt</code> only there's something you
+need to tell us<br>
+  </li>
+</ul>
+<span style="font-weight: bold;"></span>Zip these into a file called
+cs3240-hw3.zip (use that name exactly!) and do not store the files in a
+folder.&nbsp; In other words, when we unzip your Zip file, all the
+files will unpack into the current directory.<br>
+<br>
+Your grade will be based on:&nbsp; quality of test case documents;
+correctness of methods in Graph and the two graph functions;
+quality of test-code.&nbsp; We will do our best to reward students for
+evidence of good professional practices.<br>
+<br>
+<h3>Resources: <br>
+</h3>
+Sorting in Python:&nbsp; <a href="https://wiki.python.org/moin/HowTo/Sorting">https://wiki.python.org/moin/HowTo/Sorting<br>
+</a><br>
+The items below are better documented in the <span style="font-style: italic;">Python Tools </span>doc on Collab.<br>
+<br>
+Nose:<br>
+<ul>
+  <li>The nose home page (download, install):&nbsp;&nbsp;&nbsp; <a href="https://nose.readthedocs.org/en/latest/">https://nose.readthedocs.org/en/latest/</a></li>
+  <li>A quick tutorial:&nbsp; <a href="http://pythontesting.net/framework/nose/nose-introduction/">http://pythontesting.net/framework/nose/nose-introduction/</a><br>
+  </li>
+</ul>
+Unittest:<br>
+<ul>
+  <li>From the Python tutorial: <a href="https://docs.python.org/3/library/unittest.html">https://docs.python.org/3/library/unittest.html</a><br>
+  </li>
+</ul>
+<code>coverage.py</code> <br>
+<ul>
+  <li>See PyCharm help or <a href="http://nedbatchelder.com/code/coverage/">http://nedbatchelder.com/code/coverage/</a></li>
+</ul>
+
+
+</body></html>

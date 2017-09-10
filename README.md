@@ -15,3 +15,6 @@ Add more methods to the list manipulation module, also create a 'Set' class. See
 
 # Lab 2
 An introduction to unit testing. Write and run unit tests on the program from Homework 2. See [here](https://rawgit.com/Karavis/CS3240/master/lab2/CS3240Lab2.html) for more details.
+
+# Homework 3
+Create a graph.py and implement all of the listed functions, using a built-in python dictionary. See [here](https://rawgit.com/Karavis/CS3240/master/hw3/CS3240Hw3.html) for more details.

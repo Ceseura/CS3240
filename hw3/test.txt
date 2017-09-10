@@ -1,0 +1,43 @@
+to test: get_adjlist(), is_adjacent(), num_nodes(), __contains__(), __len__(), add_node(), link_nodes(), unlink_nodes(), del_node()
+
+get_adjlist(node)
+	if node is not in graph: return None
+	if node is in graph: return list of adjacent nodes
+
+is_adjacent(node1, node2)
+	if node1 is not in graph: return False
+	if node1 is in graph and adjacent to node2: return True
+	if node1 is in graph and not adjacent to node2: return False
+
+num_nodes()
+	if graph is empty: return 0
+	if graph is non-empty: return number of nodes
+
+__contains__(node)
+	if node is in graph: return True
+	if node is not in graph: return False
+
+__len__()
+	if graph is empty: return 0
+	if graph is non-empty: return number of nodes
+
+add_node(node)
+	if node is already in graph: return False, does not change sgraph
+	if node is not in graph: return True, add node to graph, node has no links
+
+link_nodes(node1, node2)
+	if node1 or node2 are not in graph: return False
+	if node1 is the same as node2: return False
+	if node1 is already linked to node2: return False
+	otherwise, link node1 and node2, return True
+
+unlink_nodes(node1, node2)
+	if node1 or node2 are not in graph: return False
+	if node1 is the same as node2: return False
+	if node1 is not already linked to node2: return False
+	otherwise, unlink node1 and node2, return True
+
+del_node(node)
+	if node is not in graph: return False
+	if node is in graph, return True, remove node from graph
+
