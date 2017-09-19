@@ -5,10 +5,8 @@ IMPORTANT: the links in this readme are cached versions of the specification web
 # Homework 1
 Use k-nn to classify user input between two categories, given a labeled dataset. See [here](https://rawgit.com/Karavis/CS3240/master/hw1/CS3240_%20HW1.html) for more details.
 
-
 # Lab 1
 Just an refresher on python. Write some random methods with factorials and list manipulation. See [here](https://rawgit.com/Karavis/CS3240/master/lab1/CS3240Lab1.html) for more details.
-
 
 # Homework 2
 Add more methods to the list manipulation module, also create a 'Set' class. See [here](https://rawgit.com/Karavis/CS3240/master/hw2/CS3240Hw2.html) for more details.
@@ -18,3 +16,9 @@ An introduction to unit testing. Write and run unit tests on the program from Ho
 
 # Homework 3
 Create a graph.py and implement all of the listed functions, using a built-in python dictionary. See [here](https://rawgit.com/Karavis/CS3240/master/hw3/CS3240Hw3.html) for more details.
+
+# Lab 3
+Introduction to git svc and github. Initialize and do various actions on a repository. See [here](https://rawgit.com/Karavis/CS3240/master/lab3/CS3240Lab3.html) for more details.
+
+# Lab 4
+Exercise with [pycrypto](https://pypi.python.org/pypi/pycrypto) to introduce the idea of encryption/decryption. Also covers file I/O and python's os and json packages. See [here](https://rawgit.com/Karavis/CS3240/master/lab4/CS3240Lab4.html) for more details.

@@ -1,0 +1,567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>CS3240 Lab, Version Control with git</title>
+</head>
+<body>
+<h2>CS3240, Lab 3:&nbsp; Version Control with git<br>
+</h2>
+The goals of these lab activities are to learn the basics of using git
+and GitHub together. <br>
+<hr style="width: 100%; height: 2px;">
+<p><strong>Before Coming to the Lab Section meeting:</strong> Before
+coming to lab, you must do the following things to prepare. There are
+readings and also installing software on your laptop.<br>
+</p>
+<ol>
+  <li>Install git on your laptop.&nbsp; See instructions below.</li>
+  <li>Create an account on <a href="https://github.com/">github.com</a>
+if you do not already have one. Use your UVa email ID, which will allow
+you to <a href="https://education.github.com/">request an educational
+discount.</a>&nbsp;
+Click on<span style="font-style: italic;"> Request a Discount</span> on
+that page. This will allow you to have a number of private repositories
+(5, in
+fact). Later this term, one person on your project team will need to
+use one of these private repositories for your team project.</li>
+  <ul>
+    <li><span style="font-weight: bold;">Note:&nbsp;</span> Request a
+Discount as soon as possible.&nbsp; In past terms, GitHub sometimes has
+taken many weeks to process these. For today's lab, it doesn't matter,
+but you need this for when the project starts.<br>
+    </li>
+  </ul>
+  <li>Download a copy of the Git Cheatsheet from <a
+ href="https://training.github.com/kit/">GitHub's training page</a>.
+You'll want to refer to this during lab, so you may want to print a
+copy and bring it to lab. Otherwise be prepared to look at it on your
+computer.</li>
+  <li>Review the slides we covered in the lecture on git and version
+control.</li>
+  <li>Look over one of the two suggested readings on git given in the
+slides:</li>
+  <ul>
+    <li>&ldquo;Git Immersion&rdquo; <a href="http://gitimmersion.com/">http://gitimmersion.com/</a></li>
+    <li>Simple tutorial of the basics: <a
+ href="http://rogerdudler.github.io/git-guide">http://rogerdudler.github.io/git-guide/</a>
+    </li>
+  </ul>
+  <li>Complete the pre-lab activity listed below and submit the
+screen-capture described there to Collab before your lab section begins.<br>
+  </li>
+</ol>
+<p><strong>During the Lab Section meeting:</strong> You'll carry out
+various coding activities (to be described later).<br>
+</p>
+<p><strong>Upon Completing the Lab Activities:</strong> Submit the
+output of a <span style="font-style: italic;">git lo</span>g command
+showing your work in the lab to the Collab
+assignment called <span style="font-style: italic;">Lab 4 Submission</span>.</p>
+<p style="font-weight: bold;">Updates, Issues, Gotchas:</p>
+<ol>
+  <li>None yet, but watch this space.<br>
+  </li>
+</ol>
+<hr style="width: 100%; height: 2px;">
+<h3>Installing git on your Laptop<br>
+</h3>
+<p>
+Linux and OS X users may have git installed already (type <span
+ style="font-style: italic;">git</span> to
+see).&nbsp; If not, if you are using a package manager (apt-get, brew,
+etc) feel free to use that to download
+git if you know how to use them for this.&nbsp; For everyone else....<br>
+</p>
+<p>
+  (<strong>Note:</strong> Windows 10 Anniversary Edition may find that you have git installed
+  if you work with this edition's bash shell.  Find info on this option
+  <a href="https://www.howtogeek.com/265900/everything-you-can-do-with-windows-10s-new-bash-shell/">
+    this link</a>.  If that doesn't work for you, follow the instructions
+    for Windows users below to install git.)
+  </p>
+
+
+<p>You can download a version of git from GitHub and other providers,
+but
+we recommend you download it from the main git site at this URL:
+<a href="http://www.git-scm.com/downloads">http://www.git-scm.com/downloads</a>
+<br>
+<span style="font-weight: bold;">Note: This is
+particularly important for Windows users,</span> since this download
+comes
+with a bash-shell (like you find on Linux) called <span
+ style="font-weight: bold;">git-bash</span> that we ask you to
+use.&nbsp; We've
+seen git commands fail mysteriously when run from the Windows
+command-prompt. Don't use that! Use git-bash! It's a bash shell command
+line environment, just like Linux, with git
+commands and also basic Unix commands installed, plus some other useful
+things in its
+/bin folder: ssh, scp, perl, curl, vi, vim.&nbsp; If you need to do
+UNIX shell kinds of things on your Windows machine, this is a nice
+thing to have.&nbsp; (FYI, if you know cygwin, it's like that but
+lighter-weight, since it installs less.)<br>
+</p>
+<p>Follow the directions to
+install git.&nbsp; Here are some notes for Windows users.&nbsp; When
+running the installer, I kept all the defaults, except you need to make
+sure you choose the following:<br>
+</p>
+<ol>
+  <li>In the window <span style="font-style: italic;">Select Components</span>,
+I chose
+    <ul>
+      <li>Under <span style="font-style: italic;">Addtional Icons</span>,
+I checked <span style="font-style: italic;">On the Desktop&nbsp; </span>(This
+puts the Git Bash icon on your desktop.)<br>
+      </li>
+      <li>Under <span style="font-style: italic;">Windows Explorer </span>integration,
+I checked <span style="font-style: italic;">Get Bash Here</span> (This
+lets your right-click on a folder and open Git Bash in that folder.)<br>
+      </li>
+    </ul>
+  </li>
+  <li>In the window <span style="font-style: italic;">Adjusting your
+PATH environment</span>, choose <span style="font-style: italic;">Use
+Git
+from Git Bash only</span><br>
+(Experience in previous classes suggests that you should only use Git
+from Git Bash.)</li>
+  <li>In the window <span style="font-style: italic;">Configuring the
+line ending conversions</span>, keep the
+default.</li>
+<li>In the window <span style="font-style: italic;">Configuring the
+  terminal to use with Git Bash,</span> we
+  recommend you choose <span style="font-style: italic;">Use MinTTY</span>.
+</li>
+</ol>
+<span style="font-weight: bold;"></span>
+<hr style="width: 100%; height: 2px;"><span style="font-weight: bold;">Initial
+configuration (one time only, for all platforms):</span><br>
+<br>
+Start a shell window to use Git (on Windows use Git Bath, on Linux or
+OS X open a "terminal" window), in that shell window, set some
+configuration values.&nbsp; Type the following
+but update the final arguments:<br>
+<span style="font-style: italic;">git config --global user.name "Your
+Name"</span><br style="font-style: italic;">
+<span style="font-style: italic;">git config --global user.email
+"your_email@whatever.com"</span><br>
+<br>
+There are times a git command will bring up an editor window. The
+default is <span style="font-style: italic;">vi</span>, but if you
+want <span style="font-style: italic;">emacs</span> instead, type:<br>
+<span style="font-style: italic;">git config --global core.editor emacs</span><br>
+<h3>
+<hr>Pre-lab Activity and Submission to Do <em>Before</em> Lab<br>
+</h3>
+<p>The following steps must be done before coming to lab. By doing
+these steps, we'll know you've got git installed correctly and have
+created a GitHub account. There's a submission to be done before coming
+to lab to show that you've done this. If you don't complete this, some
+points will be deducted for lab participation this week.</p>
+<p>First, create a repository on GitHub:</p>
+<ol>
+  <li>Sign into www.github.com with your account.&nbsp; (Don't have
+one? See the top of this page.)</li>
+  <li>Create new repository.&nbsp; (See instructions they give, or just
+go for it by clicking the plus-sign.)</li>
+  <li>Name the repo <span style="font-style: italic;">cs3240-labdemo</span>,
+and make it public.</li>
+  <li>Check the box to initialize this with a README file.</li>
+  <li>Add a .gitignore for Python, and choose the MIT License.</li>
+  <li>Now click Create Repository.</li>
+</ol>
+<p>GitHub will show the main page for your new repo. <br>
+Near the bottom-right, you'll see a text-box with the text <span
+ style="font-style: italic;">HTTPS clone URL</span> right above it, and
+an icon like a clipboard with an arrow to its right. This textbox
+contains the URL that you can use with a git-command on your local
+machine to clone the directory. To do that:<br>
+</p>
+<ol>
+  <li>Click on the clipboard icon to copy the URL to your clipboard.</li>
+  <li>Go to your shell window on your local machine, and <span
+ style="font-style: italic;">cd</span> to a folder where you want to
+keep your projects in folders. (Create such a folder if you don't have
+one.)</li>
+  <li>Type <span style="font-style: italic;">git clone</span> and then
+paste in the URL from your clipboard and
+hit return.&nbsp; It should look something like this:<br>
+    <span style="font-style: italic;">git clone
+https://github.com/hortonuva/cs3240-demo.git</span><br>
+(Windows users:&nbsp; in Git-Bash, you might find copy-and-paste
+commands by right-clicking in your window.&nbsp; If not, see <a
+ href="https://www.udacity.com/wiki/ud775/git-bash-copy-paste">this
+link</a> for some more info on how to cut and
+paste.)<br>
+  </li>
+  <li>This will download all the files from the remote repo into a
+directory (named after your repo) in the current directory.<br>
+  </li>
+</ol>
+<p>
+Congrats! You now have a local repository on your machine you can work
+with, plus a separate repository on GitHub where you can upload your
+files for safekeeping or to share.&nbsp; Now do the following from the
+shell window on your local machine:<br>
+</p>
+<ol>
+  <li>Use <span style="font-style: italic;">cd</span> to make sure
+you're in the <span style="font-style: italic;">cs3240-labdemo</span>
+directory.</li>
+  <li>Type <span style="font-style: italic;">ls -a</span> to see what
+files are there.&nbsp; Note the hidden files
+that begin with a "."</li>
+  <li>Create a file <span style="font-style: italic;">hello.py</span>
+that prints "hello".&nbsp; Make sure it runs
+under Python 3.</li>
+  <li>Type <span style="font-style: italic;">git status</span> and
+make sure you understand what that tells you.</li>
+  <li>Type <span style="font-style: italic;">git add hello.py</span>
+to add that file to the staging area.</li>
+  <li>Type <span style="font-style: italic;">git status</span> and
+make sure you understand what that tells you.</li>
+  <li>Add the file to your local repo by typing <span
+ style="font-style: italic;">git commit -m "Initial
+commit"</span> </li>
+  <li>Synchronize your local repository with your remote repo on GitHub
+by
+typing <span style="font-style: italic;">git push</span><br>
+  </li>
+</ol>
+<p>Go back to your web-browser showing your GitHub repo.&nbsp; Refresh
+your browser window, and you should see the hello.py file in the list
+of files.<br>
+</p>
+<p><span style="font-weight: bold;">To submit before lab:</span><br>
+</p>
+<p>Take a screen-capture of this window, and submit the image file to
+<span style="font-style: italic;">Lab 5 Pre-lab</span> under <span
+ style="font-style: italic;">Assignments</span> in Collab before coming
+to lab.&nbsp; Make
+sure your image file shows your repo name (which includes your GitHub
+id) and the list of files.&nbsp;
+<a
+ href="https://collab.its.virginia.edu/x/Mpc0gI">Here's
+an example</a> of the kind of screen-capture we want.<br>
+<br>
+</p>
+<br>
+<p>
+</p>
+<hr style="width: 100%; height: 2px;">
+<h3>Lab Activity 1:<br>
+</h3>
+Feel free to work on all the activities with a partner. Everyone must
+do them, but you can talk with your fellow students about how to do
+them. Helping each other learn in this lab is a good thing!<br>
+<br>
+The goal of this activity is to create some history! That sounds much
+more dramatic than what you're going to do. You'll enhance your program
+by making a series of small changes, commiting the file to your local
+repo each time. The changes you are committing here are much smaller
+and more trivial than you would normally do using version control.
+Again, the goal here is to get a sequence of commits into your local
+repo.<br>
+<ol>
+  <li>Edit your file <span style="font-style: italic;">hello.py</span>
+to make a function called <span style="font-style: italic;">greeting(msg)</span>
+that
+prints out the parameter. Use this to print your message
+"hello".&nbsp;&nbsp; Test your program</li>
+  <li>Before adding it to the staging area and putting it into the
+repo, use git's <span style="font-style: italic;">status</span> comand
+to see
+what that tells you about the status of your files.</li>
+  <li>Add it to the staging area, and use git's <span
+ style="font-style: italic;">status</span> command to see what that
+tells you about the status of your files.<br>
+  </li>
+  <li>Now, do what it takes to commit it into the local repo (with a
+good commit message).</li>
+  <li>Use git's log command to see the history of your changes.</li>
+  <li>Now, create a file <span style="font-style: italic;">helper.py</span>
+and move the definition of <span style="font-style: italic;">greeting(msg)</span>
+to that
+file.&nbsp; Edit <span style="font-style: italic;">hello.py</span> and
+remove the function
+definition there, and make it use the method by importing <span
+ style="font-style: italic;">helper.py</span>
+file.&nbsp; (This is pretty sophisticated stuff, so you should really
+test this carefully before proceeding! &lt;grin&gt;)</li>
+  <li>Do <span style="font-style: italic;">git add</span> again to put
+it into the staging area.&nbsp; Before you commit....&nbsp;</li>
+  <li>Question:&nbsp; What if you change your mind, and decide you do
+not what this in the staging area?&nbsp; How do you remove it?&nbsp;
+Hint: type <span style="font-style: italic;">git status</span> and it
+will tell you.&nbsp; Try this.&nbsp; <br>
+  </li>
+  <li>Then do what it takes to put that into the local
+repo (with a good commit message). Before proceding, use git's <span
+ style="font-style: italic;">log</span>
+command again to see the history of your changes.&nbsp; Try using this
+form:&nbsp; <span style="font-style: italic;">git log --oneline</span></li>
+  <li> What if you goof up?&nbsp; Maybe you commit but then decide the
+message wasn't right? Maybe you forgot to stage a file for this
+commit?&nbsp; Maybe you've decided that file you just committed was
+bad, and you want the version before that commit?&nbsp; These are easy
+mistakes to correct.&nbsp; See
+<a href="https://www.git-scm.com/book/en/v2/Git-Basics-Undoing-Things">the
+section "Undoing Things" in the Git Pro book</a> on-line if you ever
+need to do any of these.<br>
+</li>
+<li>When you type <span style="font-style: italic;">git status</span> do you
+  see files listed as "untracked" that you don't care about? For example,
+  if you use the Emacs editor, you'll see Emacs backup files with names that end
+  in '~'.  We don't want those to be under configuration managment. You may
+  see similar files created by your editor, your IDE, etc.<br>
+  The file <span style="font-style: italic;">.gitignore</span> lists patterns
+  of filenames that Git will ignore. It's a good idea to add regular expressions
+  to this file to match any files your development practice might create
+  that you don't want in your repos.
+  <br> Edit this file right now if you have untracked files you don't want
+  in your repos. Type <span style="font-style: italic;">git status</span> after
+  to see if this worked.  If you do, you'll see that it tells you that
+  there's something you do need to commit, so take care of that to keep your
+  repo up to date.
+</select>
+</li>
+</ol>
+At this point, you should have a short set of entries in your project
+history.&nbsp; Note that in the output of the <span
+ style="font-style: italic;">log</span> command you will see each
+commit identified by an SHA-1 hash (or the first part of that). A hash
+value is created for each set of files. This is how git identifies a
+set of files that makes up a commit.<br>
+<p>
+</p>
+<hr style="width: 100%; height: 2px;">
+<h3>Lab Activity 2:<br>
+</h3>
+The files in your local repo have changed, but the remote repo has not.
+If you want the remote repo to match your GitHub repo, it's easy: <span
+ style="font-style: italic;">git status</span> will remind you what to
+do if you forget.&nbsp; But before we do that, here are some things to
+know:<br>
+<ul>
+  <li>When you cloned the GitHub repo to your local machine, your local
+git repo remembers this. It keeps track of a <span
+ style="font-weight: bold;">remote</span> that points to the "remote
+address" of that remote repo.&nbsp; Remember this term: a <span
+ style="font-weight: bold;">remote</span> is a reference to a
+repository on a remote server.<br>
+Use this command to see what remotes are active:&nbsp; <span
+ style="font-style: italic;">git remote -v&nbsp;</span> (Try
+it!)&nbsp;&nbsp; Very often a remote is given the name <span
+ style="font-style: italic;">origin</span>, which is the case here from
+our use of <span style="font-style: italic;">git clone</span> earlier.<br>
+  </li>
+  <li>Another term to know is a <span style="font-weight: bold;">branch</span>.
+We'll say more about these in the next activity. If you think of your
+series of commits as a plant growing from a starting point, a branch is
+a pointer to where the next commit will "grow" from.&nbsp; In what
+we've done in this lab so far, right now our series of commits is like
+a vine, with no branching at all.&nbsp; Each new commit is added to the
+end. But it's possible to have more than one branch.</li>
+  <li>Each branch has name. You can give new branches a name you
+choose.&nbsp; When you start a new project, the "default" branch is
+given the name <span style="font-weight: bold;">master</span>.&nbsp;
+There's no special meaning for git; it could have called it <span
+ style="font-style: italic;">default</span> or anything.&nbsp; (It's
+not the master of anything in the sense of being in charge!)</li>
+  <li>You can see the branches in your local repo by typing:&nbsp; <span
+ style="font-style: italic;">git branch&nbsp;</span>&nbsp; (Try it!)<br>
+You can see all branches by typing:&nbsp; <span
+ style="font-style: italic;">git branch -a</span>&nbsp;&nbsp; (Try
+it!&nbsp; We'll explain what you see there soon.)</li>
+  <li>A branch points to a particular commit.&nbsp; If you are "working
+on that branch", this means that your working copy (the files you see
+in your directory) are the file-versions in that particular commit, and
+that any new commit you make will "grow" from that commit.</li>
+  <li>You can switch from one branch to another using the git command <span
+ style="font-style: italic;">checkout</span>.&nbsp; This will change
+what's stored in your working copy: the current files are removed,
+and the files from the branch are retrieved from the repo and put
+into your working directory.<br>
+  </li>
+  <li>When talking about branches in git, <span
+ style="font-weight: bold;">HEAD</span> refers to the current branch
+that you're working on.&nbsp; So HEAD is a pointer to a branch.</li>
+  <li>Back to the concept of a remote.&nbsp;&nbsp; When you create a
+remote to access versions of files on a remote repository, git actually
+creates a new branch that is identified by <span
+ style="font-style: italic;">remote/branch</span>.&nbsp; So when you
+typed <span style="font-style: italic;">git branch -a</span> above,
+you see <span style="font-style: italic;">origin/master</span>.&nbsp;
+This tells there is a 2nd branch call <span style="font-style: italic;">master</span>
+but this one shows the files as they were when you cloned the repo from
+GitHub.</li>
+</ul>
+Do the following:<br>
+<ol>
+  <li>Make sure we know what's in our current files.&nbsp; Print out
+hello.py so you see what's in it (perhaps with the command <span
+ style="font-style: italic;">cat</span>).&nbsp; Also, type <span
+ style="font-style: italic;">git log
+--oneline --decorate</span> which shows the history of this branch <span
+ style="text-decoration: underline;">and</span> shows
+the branch names.</li>
+  <li>Let's change branches, and move to the branch
+origin/master.&nbsp; Type:&nbsp; <span style="font-style: italic;">git
+checkout origin/master</span><br>
+Now see what's in <span style="font-style: italic;">hello.py</span>
+and type <span style="font-style: italic;">git log --oneline --decorate</span>
+again.</li>
+  <li>What's going on?&nbsp; Do you understand what's happened?&nbsp;
+(Note:&nbsp; when you did the checkout, you got see some messages about
+the fact that you're now working on a branch that shouldn't be changed,
+since it's supposed to reflect what's on your remote repo.)</li>
+<li>Type <span style="font-style: italic;">git branch -a</span> to make
+  sure you see what your branch situation really is.
+  <li>You can go back to your local master branch.&nbsp; Type:&nbsp; <span
+ style="font-style: italic;">git checkout master</span><br>
+Now see what's in <span style="font-style: italic;">hello.py</span>
+and type <span style="font-style: italic;">git log --oneline --decorate</span>
+again.</li>
+  <li>Let's send all our changes in our local repo to the GitHub
+repo.&nbsp; Once we've done that, it will store the same versions of
+the files there as we have here locally.&nbsp; Just type: <span
+ style="font-style: italic;">git push</span><br>
+Look at the messages.&nbsp; Type git status and note that it says "Your
+branch is up-to-date with 'origin/master'."</li>
+  <li> Go back to GitHub, do
+a refresh.&nbsp; Is all as you expect?</li>
+  <li>While on GitHub, edit your README.md there in the
+web-interface.&nbsp; Change an
+existing line.<br>
+  </li>
+  <li>Go back to your local machine, and edit README.md by changing
+that exact same line in a different way.&nbsp; We're trying to force a
+conflict here, so do what it takes to create something that cannot be
+merged automatically.&nbsp; Put this version into your local repo.</li>
+  <li>Now try pushing your files to GitHub.&nbsp; It should report a
+problem, right?</li>
+  <li>Now try pulling your GitHub files down to your local
+machine.&nbsp; You should get a conflict situation.&nbsp; Use your
+editor to fix to resolve this conflict (as you see fit), and then push
+this back to GitHub.&nbsp; Check out the state of things on
+GitHub.&nbsp; Is all as you expect it to be?</li>
+</ol>
+<h3>
+<hr>Lab Activity 3:<br>
+</h3>
+Let's practice branching.&nbsp; Our goal here is for you to create two
+different working versions of your Python program.<br>
+<ol>
+  <li>On your local machine, create a new branch with the <span
+ style="font-style: italic;">git checkout
+-b</span> command.&nbsp; Name your branch <span
+ style="font-style: italic;">new-feature1</span>.&nbsp; <br>
+  </li>
+  <li>Switch to that branch.&nbsp;&nbsp; Now, create a new .py file
+that does something simple, perhaps changing or using your existing
+files.&nbsp;&nbsp; Feel free to edit your existing files too.&nbsp; We
+want some changes to this new branch.<br>
+  </li>
+  <li>Do what it takes to put those changes into your local repo.</li>
+  <li>Switch back to your master branch.&nbsp; Look at the files in
+your directory.&nbsp; Do you see the new file you added?&nbsp;&nbsp;
+Why or why not?</li>
+  <li>Again, create a new .py file here in the master branch, and
+change some existing files too.&nbsp; Do what it takes to put these
+into the local repo.</li>
+  <li>Look at the files in your directory.&nbsp; Now, switch to the
+other branch and look again.&nbsp; Is all as you expect?</li>
+  <li>Switch back to the master branch, and now merge that other branch
+into this branch.&nbsp; Resolve any conflicts.&nbsp; Look at all your
+files.&nbsp; Is all as you expect?</li>
+  <li>Type this command:&nbsp; <span style="font-style: italic;">
+git log --graph --oneline --decorate</span><br>
+This will show a graph-like version of your branches, with info on
+which commit is in which branch.&nbsp; Does its output make sense to
+you?<br>
+  </li>
+  <li>Finally, from here in the master branch, push to the GitHub repo.</li>
+</ol>
+This scenario mimics a common work-flow.&nbsp; You want to keep track
+of the stable version of your files.&nbsp; You use the branch <span
+ style="font-style: italic;">master</span> for that.&nbsp; New
+development can continue on the <span style="font-style: italic;">new-feature1</span>
+branch, where you make changes and test them, but wait to add them to
+the stable version of your code-base (i.e. the <span
+ style="font-style: italic;">master</span> branch).&nbsp; Once you're
+satisified they can be added to the stable-code base, you switch to the
+<span style="font-style: italic;">master</span> branch and then merge
+the <span style="font-style: italic;">new-feature1</span> branch into
+it.&nbsp; (And, if you happened to make changes to the <span
+ style="font-style: italic;">master</span> branch&nbsp; too, those will
+be merged as well.)<br>
+<br>
+See <a
+ href="http://www.git-scm.com/book/en/v2/Git-Branching-Branching-Workflows">the
+section "Branching Workflows"
+in the Pro Git book</a> on-line for more info on this idea.&nbsp; <br>
+<br>
+
+<h3>
+<hr>Lab Activity 4:  Remote Branches<br>
+</h3>
+<ol>
+  <li>Using the branch you created in the last activity, push that branch to
+    your remote repo.  Make sure you have edit some files in that branch first so that you can recognize that
+    the files differ from the master branch.
+  </li>
+  <li>Look on GitHub and explore how you can see the branch and the
+  files stored in that branch. GitHub's interface lets you move from branch
+  to branch easily.
+  </li>
+  <li>Back on your machine, type the <span style="font-style: italic;">git
+    branch -a</span> command and make sure you understand its output.
+  </li>
+  <li>Back on GitHub, update one of the files in the new branch there by
+    editing it directly from GitHub.
+  </li>
+  <li>Back on your machine, what do you need to do to retrieve those changes
+    from the GitHub repo? Figure that out and do it.
+  </li>
+</ol>
+
+  <h3>
+  <hr>PostLab work:<br>
+  </h3>
+Read more branching and about what's known as the GitHub workflow.  Be ready
+for an on-line quiz due later this week.
+Here are links that discuss this.
+<ul>
+  <li><a href="https://help.github.com/articles/what-is-a-good-git-workflow/">
+GitHub's page on the GitHub workflow</a> with different descriptons of it.
+ </li>
+ <li>
+   <a href="http://scottchacon.com/2011/08/31/github-flow.html"> An
+   article mentioned on the previous page</a> with a nice textual description of the
+   GitHub workflow.
+ </li>
+ <li><a href="https://gist.github.com/blackfalcon/8428401"> An post with some
+   nice descriptions of branching</a> and then some things on the GitHub flow.
+ </li>
+ </ul>
+
+<hr>
+<h3>Submission:</h3>
+<span style="font-weight: bold;">By the end of lab</span>, submit the
+output of this command from your master branch:&nbsp; <span
+ style="font-style: italic;">git
+log
+--oneline --decorate --graph<br>
+</span>in the text-field of the Collab Assignment <span
+ style="font-style: italic;">Lab 3 Submission</span>.<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>CS3240 Lab, Files, JSON and Crypto</title>
+</head>
+<body>
+<h2>CS3240, Lab 4:&nbsp; Files, JSON and pycrypto</h2>
+<span style="font-style: italic;">(Updated:&nbsp; 9/17/2017, 1:40pm)</span><br>
+<br>
+The goals of these lab activities are to learn about saving and
+encoding data in Python, and to get started with some simple encryption
+in Python.<br>
+<hr style="width: 100%; height: 2px;">
+<p><big><big><strong>NOTE for F17:</strong>
+Instructor illness led to a change of plans for this lab, so what's
+listed below as "pre-lab" readings and are things you should do in
+lab today. So below where it says "before lab", those are now things
+you'll do during lab. This probably means you won't complete all the
+activities, but don't worry. See comments at the end of this about that.</big></big></p>
+<p><big><big>If you have problems installing pycrypto, work with your
+TA during lab. In worst case, there a file and JSON coding activities
+that don't need pycrytpo.<br>
+</big></big></p>
+<hr style="width: 100%; height: 2px;">
+<p><br>
+</p>
+<p><strong>Before Coming to the Lab Section meeting:</strong> Before
+coming to lab, you must do the following things to prepare. There are
+readings and also installing software on your laptop.<br>
+</p>
+<ol>
+  <li>Read section 4 of the <a
+ href="https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Development-Info/python-tools-f17.html">
+Tools for Python document</a> on <span style="font-style: italic;">virtualenv</span>
+in the
+Development-Info area of Collab's Resources. <br>
+  </li>
+  <li>Create a new virtualenv directory on your machine, and activate
+it and deactivate it to make sure it's working.</li>
+  <li>Understand Python's <span style="font-family: monospace;">eval </span>statement
+and about the difference between <span style="font-family: monospace;">b'hello'</span>
+and <span style="font-family: monospace;">'hello'</span>.&nbsp; See
+below for more details.</li>
+  <li>Study the basics about opening, reading and writing files in
+Python, and about how to convert and store Python objects as strings
+using JSON. Learn this by reading <a
+ href="http://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files">a
+short section</a> of the Python 3 tutorial.</li>
+  <li style="text-decoration: line-through;">Be ready for a short,
+relatively simple quiz on the above items
+at the start of lab!</li>
+  <li><span style="font-weight: bold;">Important:</span> Try to install
+pycrypto on your laptop, following the instructions in Section 5 of the
+    <a
+ href="https://collab.its.virginia.edu/access/content/group/e236583f-92a9-4e52-af3c-973b3155c30c/Development-Info/python-tools-f17.html">
+Tools for Python document</a> <span style="font-style: italic;"></span>in
+the
+Development-Info area of Collab's Resources.</li>
+  <ol>
+    <ol>
+    </ol>
+  </ol>
+  <ul>
+    <li>If this fails on your machine, find the email you got early
+this semester that contains your CS lab account user-id and
+password.&nbsp; This email was sent by Root in the CS department, and
+will have a Windows and Linux login. You may need the Linux login
+during lab.</li>
+  </ul>
+  <ol>
+    <ol>
+    </ol>
+  </ol>
+  <li>At the very least, quickly scan <a
+ href="http://www.laurentluce.com/posts/python-and-cryptography-with-pycrypto/">this
+web page on using pycrypto</a>, up to the section on "Public-key
+algorithms."&nbsp; You do not have to understand all this completely
+(yet), but having looked at it before lab will help you in the 2nd part
+of the lab.<br>
+  </li>
+</ol>
+<p><strong>During the Lab Section meeting:</strong> You'll carry out
+various coding activities (to be described later).<br>
+</p>
+<p><strong>Upon Completing the Lab Activities:</strong> Submit the
+files listed in the final complete version of this page to the Collab
+assignment called <span style="font-style: italic;">Lab 4 Submission</span>.</p>
+<p style="font-weight: bold;">Updates, Issues, Gotchas:</p>
+<ol>
+  <li>None yet, but watch this space.<br>
+  </li>
+</ol>
+<hr style="width: 100%; height: 2px;">
+<h3>Some Guidance on the Readings before Lab<br>
+</h3>
+Read the following before coming to lab.&nbsp; Lab will involve
+exercises based on the concepts and techniques shown in these
+reading.&nbsp; So you don't have to know everything in the readings
+perfectly before lab, nor do you have to try out any coding. But
+knowing the concepts and ideas beforehand is necessary to complete the
+exercises in lab on Monday.<br>
+<br>
+Here is some more information about the readings.<br>
+<br>
+<span style="font-weight: bold;">(A) File I/O:&nbsp;&nbsp;</span>What
+you should
+understand is:<br>
+<ol>
+  <li>How to open a file for reading and writing.</li>
+  <li>How to use the <span style="font-weight: bold;">with</span>
+statement for files and why.</li>
+  <li>How to read a file line by line and process it.</li>
+  <li>Using the "b" flag to read or write data as <span
+ style="font-style: italic;">bytes</span>.</li>
+</ol>
+About the type <span style="font-style: italic;">bytes</span>: Strings
+in Python 3 store Unicode characters.&nbsp; In Python 2, a string
+contant like <span style="font-family: monospace;">"hello"</span> did
+not store Unicode but stored one-byte characters. Python 3 does support
+the
+equivalent, and this type is called a <span style="font-style: italic;">bytes</span>
+object.&nbsp;&nbsp; Literals of this type are written like strings but
+have the letter-b in front of them.&nbsp; For example, <span
+ style="font-family: monospace;">b"hello"</span> is a sequence of
+one-byte values.<br>
+<br>
+Why do you need to know this now?&nbsp; First, the "b" flag is used
+when opening a file to process its contents as data values (<span
+ style="font-style: italic;">bytes</span>) and not as strings.&nbsp;
+Second, some libraries expect byte-sequences and not Unicode strings.
+Web pages and documentation written for Python 2 will use <span
+ style="font-family: monospace;">"hello"</span> but in Python 3 you
+must use <span style="font-family: monospace;">b"hello"</span> or get
+an error. This is true of the pycrypto libraries.<br>
+<br>
+<span style="font-weight: bold;">(B)&nbsp; JSON:&nbsp; </span>This
+stands for
+JavaScript Object Notation, and this has become a very popular way of
+encoding object data for persisentence or interchange with other
+programs (even in other languages). All major languages have nice JSON
+libraries, and the link given in the top section shows you the basics
+about how to use this in Python. <br>
+<br>
+<a
+ href="http://en.wikipedia.org/wiki/JSON#Data_types.2C_syntax_and_example">This
+section</a> of the Wikipedia article on JSON shows an example of
+something stored in JSON format.&nbsp; Note that JSON has the idea of
+an <span style="font-style: italic;">Object</span>, which is key-value
+pairs surrounded by curly-brackets (so it's a lot like a Python
+dictionary), and an Array, which is a sequence of items surrounded by
+square-brackets (like a Python list).&nbsp; So you already speak JSON!<br>
+<br>
+Full details about the Python 3 module json are <a
+ href="http://docs.python.org/3/library/json.html">documented here</a>.&nbsp;
+You don't
+need to learn this in detail before lab; just read the link at the top
+of this section.&nbsp; But if you need to know more, the link given in
+this paragraph has full details.<br>
+<br>
+<span style="font-weight: bold;">(C) eval in Python:&nbsp;</span> Many
+languages allow you to store "code" in a string and then "execute" it.
+In Python, <span style="font-family: monospace;">eval(s) </span>will
+treat the string <span style="font-family: monospace;">s</span> as
+Python code and evaluate it. The string could contain an entire Python
+statement, or perhaps a literal that defines an object like a list or
+dictionary. Do you understand why the following
+commands do what they do in the Python interpreter?
+<pre>&gt;&gt;&gt; s = "print('hello')"<br>&gt;&gt;&gt; eval(s)<br>hello<br>&gt;&gt;&gt; s = "[1, 2, 3]"<br>&gt;&gt;&gt; lst = eval(s)<br>&gt;&gt;&gt; print(lst[0], len(lst))<br>1 3<br></pre>
+Why do you need to know this now?&nbsp; JSON stores data as strings,
+and you'll may need to use <span style="font-family: monospace;">eval</span>
+to turn these strings back into Python objects.&nbsp; Note that you
+don't need to use <span style="font-style: italic;">eval</span> when
+calling <span style="font-style: italic;">json.load()</span> to read
+data from a file.<br>
+<br>
+<span style="font-weight: bold;"></span><br>
+<p>
+</p>
+<hr style="width: 100%; height: 2px;">
+<h3>Activity 1:&nbsp; (needs a bit of pycrypto)<br>
+</h3>
+Create a file called lab4_part1.py.&nbsp; In it write a program that
+uses a loop to read a set of user-ids and passwords, storing them in a
+dictionary where the key is the user-id and the password is the
+value.&nbsp; Your loop can stop when the Python <span
+ style="font-style: italic;">input</span> function returns an empty
+string, i.e. when you hit return when it prompts you for a password.<br>
+<br>
+Next, write a second loop that simulates checking passwords. The loop
+reads a user ID and password, and prints either "user not found" or
+"login fails" or "login succeeds" for the obvious cases.<br>
+<br>
+Finally, modify your program to use a pycrypto SHA256 object and its
+hexdigest() method so that you only store the hash in the dictionary
+instead of the clear-text password. Modify your second loop so that it
+authenticates based on the password hash.&nbsp; (Help for F17
+lab:&nbsp; the example program <span style="font-style: italic;">pycrypto1.py</span>
+shows how to create this kind of hash.)<br>
+<br>
+Note: don't forget that pycrypto functions that seem to require strings
+really require objects of type <span style="font-style: italic;">bytes</span>.
+A <span style="font-style: italic;">bytes</span> constant looks like <span
+ style="font-family: monospace;">b'hello'</span>, and a Unicode string
+named <span style="font-family: monospace;">foo</span> can be
+converted to a bytes object like this:&nbsp; <span
+ style="font-family: monospace;">str.encode(foo)</span><br>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h3>Activity 2:&nbsp; (doesn't use pycrypto at all)<br>
+</h3>
+Create a file called lab4_part2.py.&nbsp;
+Write a loop that counts the number of lines in each non-directory file
+in the current directory and stores the results in a dictionary. Then
+create a list containing the current directory as the first item, and
+the dictionary of line numbers as the second item.&nbsp; For this
+you'll probably want to use the Python methods <span
+ style="font-style: italic;">os.listdir()</span> and <span
+ style="font-style: italic;">os.path.isdir()</span>.<br>
+<br>
+Next, add code to store a JSON version of that list into a file called <span
+ style="font-style: italic;">file_info.txt</span>.&nbsp; Then write
+another program in a file lab4_part3.py that gets the info from
+file_info.txt, opens each file stored in the list you retrieved, and
+prints a message if the current number of lines in the file does not
+match what is stored in file_info.txt. Test your program by editing at
+least one of your files to change the number of lines, to make sure
+that lab4_part3.py detects changes.<br>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h3>Activity 3:<br>
+</h3>
+Modify the two programs from the last activity as follows.&nbsp; (Feel
+free to make copies and then modify the new version.)<br>
+<br>
+Instead of counting line numbers and storing and checking that,
+calculate a hash value for the file based on the code seen in the
+section "Hash Function -&gt; Applications" on the following site and
+use that in the second program to determine if a file has changed. <br>
+<a
+ href="http://www.laurentluce.com/posts/python-and-cryptography-with-pycrypto/">http://www.laurentluce.com/posts/python-and-cryptography-with-pycrypto/</a>
+<br>
+<br>
+BTW, you probably don't need the following for this lab, but in case
+you're interested later:<br>
+<ul>
+  <li>A general overview of the pycrypto package: <a
+ href="https://www.dlitz.net/software/pycrypto/doc/">https://www.dlitz.net/software/pycrypto/doc/</a></li>
+  <a> </a>
+  <li><a>The API for pycrypto classes etc.:&nbsp; </a><a
+ href="https://www.dlitz.net/software/pycrypto/api/2.6/">https://www.dlitz.net/software/pycrypto/api/2.6/</a><br>
+  </li>
+</ul>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h3>Activity 4:<br>
+</h3>
+Create a file called lab4_part4.py.&nbsp; In it read a key from the
+keyboard, and also a message. (Both strings.)&nbsp; Use pycrypto's
+DES/ECB block encryption to encrypt the message using the
+key.&nbsp;&nbsp; Use JSON to write out the encrypted string to a file
+called secret.txt. (You choose how to make this happen with
+JSON.)&nbsp;&nbsp; See the link in the last activity for example code
+that uses DES with ECB.<br>
+<br>
+Write a second program called lab4_part5.py, which prompts the user for
+a key, then reads the encrypted message back from the JSON file and
+tries to decrypt it. Print the results of the decryption operation to
+the console.<br>
+<br>
+<h3>If you have time:</h3>
+<ul>
+  <li>Modify the last program to use AES encryption.&nbsp; </li>
+  <li>Modify lab4_part2.py so that it makes an encrypted copy of each
+file.</li>
+</ul>
+<p>
+</p>
+<hr>
+<h3>Submission:</h3>
+<span style="font-weight: bold;">By the end of lab</span>, submit all
+the files you were able to complete.&nbsp; (lab4_part1.py
+through lab4_part5.py and any variants) to the Collab Assignment for
+this lab.<br>
+<br>
+If you didn't complete these, submit what you had plus a <span
+ style="font-weight: bold;">README.txt</span>
+file that explains how far you got.&nbsp; Work on the rest of these
+sometime this week, but you do not have to submit them.&nbsp; Just
+submit what you have done at the end of lab, and work on the rest on
+your own later.<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"file_checksums.txt": "4849f0c2ccee19dd71d03c2b9452906b", "file_info.txt": "54a66148e456514cdfc33585ff224d27", "lab3_part1.py": "eb3ed620ab191dde73049c357ae3785f", "lab3_part2.py": "3b3543be92fc68930b18c097effc5150", "lab3_part3.py": "ee45751860a755f7e582ac818e579edf", "lab3_part4.py": "3c475d633d5e0292c385f284098c5ae9", "lab3_part5.py": "019d2f33e96af2a72cf8ced21c63a773"}
