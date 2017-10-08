@@ -10,43 +10,51 @@ def secret_string(data, key):
 	cipher_text = cipher.encrypt(data.encode())
 	print(cipher_text)
 	return cipher_text
-	
-### TODO: error checking, make sure filename formatting is correct
-### TODO: Try encrypting non text files?
+
 def enc_file(filename, key):
 	''' Takes a filename and an AES symmetric key, creates a new, encrypted file. Returns true if the operation was successful. '''
-	with open(filename, 'rb') as dfile, open(filename + '.enc', 'wb') as eFile:
-		running = True 
-		while running:
-			block = dfile.read(1024 * AES.block_size)
-			# stop if you run out of stuff to read
-			if len(block) == 0:
-				running = False
-			else:
-				# add padding if necessary
-				while len(block) % AES.block_size != 0:
-					block += b' '
+	try:
+		with open(filename, 'rb') as dfile, open(filename + '.enc', 'wb') as eFile:
+			running = True 
+			while running:
+				block = dfile.read(1024 * AES.block_size)
+				# stop if you run out of stuff to read
+				if len(block) == 0:
+					running = False
+				else:
+					# add padding if necessary
+					while len(block) % AES.block_size != 0:
+						block += b' '
 
-				cipher = AES.new(key, AES.MODE_ECB)
-				msg = cipher.encrypt(block)
-				eFile.write(msg)
-		return True
+					cipher = AES.new(key, AES.MODE_ECB)
+					msg = cipher.encrypt(block)
+					eFile.write(msg)
+			return True
+	except FileNotFoundError:
+		return False
 
 def decrypt_file(filename, key):
 	''' Takes a filename and an AES symmetric key, creates a new, decrypted file. Returns true if the operation was successful. '''
-	with open(filename, 'rb') as efile, open('DEC' + filename[:-4], 'wb') as dfile:
-		running = True
-		while running:
-			block = efile.read(1024 * AES.block_size)
-			# stop if you run out of stuff to read
-			if len(block) == 0:
-				running = False
-			else:
-				# Shouldn't need to add padding if the file has been encrypted correctly
-				cipher = AES.new(key, AES.MODE_ECB)
-				msg = cipher.decrypt(block)
-				dfile.write(msg)
+	# Check that file ends with '.enc'
+	if filename[-4:] != '.enc':
+		return False
 
+	try:
+		with open(filename, 'rb') as efile, open('DEC' + filename[:-4], 'wb') as dfile:
+			running = True
+			while running:
+				block = efile.read(1024 * AES.block_size)
+				# stop if you run out of stuff to read
+				if len(block) == 0:
+					running = False
+				else:
+					# Shouldn't need to add padding if the file has been encrypted correctly
+					cipher = AES.new(key, AES.MODE_ECB)
+					msg = cipher.decrypt(block)
+					dfile.write(msg)
+			return True
+	except FileNotFoundError:
+		return False
 
 def test_secret_string():
 	key = RSA.generate(1024)
@@ -72,4 +80,3 @@ def test_decrypt_file():
 
 	decrypt_file("testFile.txt.enc", key)
 
-test_decrypt_file()
